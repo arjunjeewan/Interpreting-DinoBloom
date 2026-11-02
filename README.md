@@ -196,7 +196,8 @@ interior-only split is uninformative there.
 
 ### 4. Patch maps for all 11 readouts (Fig. 2)
 
-`figures/linear_unseen_maps_all_dinobloom.pdf` shows the cells of Fig. 2 for all 11 readouts. Its
+`figures/linear_unseen_maps_all_dinobloom.pdf` shows the cells of Fig. 2 for all 11 readouts, with
+the same nucleus and cell outlines. Its
 colour scale is set by this figure's own 99th percentile of |value| (0.09), so its colours are not
 directly comparable with Fig. 2.
 

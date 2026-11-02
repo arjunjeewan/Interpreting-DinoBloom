@@ -576,8 +576,9 @@ def linear_unseen_maps(encoder: str = "dinobloom", split: str = "test", readouts
     the readout, summed over the 12 blocks and averaged over the five readouts, minus that
     patch's mean write over all scored cells, in units of the readout's sd across cells.
     One symmetric scale for every map, clipped at the 99th percentile of |value| over the
-    shown maps. Full width. No text beyond panel names, row labels and colour-bar ticks;
-    the explanation belongs in the caption.
+    shown maps. Lines: nucleus and cell outlines, the 0.5 level of the per-patch nucleus and
+    nucleus + cytoplasm fractions of the 25-seed U-Net majority mask. Full width. No text
+    beyond panel names, row labels and colour-bar ticks; the explanation belongs in the caption.
     """
     from PIL import Image
 
@@ -593,6 +594,10 @@ def linear_unseen_maps(encoder: str = "dinobloom", split: str = "test", readouts
     tiles = {(c, d): value[(maps.cell_id == c) & (maps.descriptor == d)].to_numpy().reshape(grid, grid)
              for c in cells for d in readouts}
     lim = float(np.percentile(np.abs(np.stack(list(tiles.values()))), 99))
+    patches = maps.drop_duplicates(["cell_id", "patch"]).set_index("cell_id")
+    outlines = {c: [patches.loc[c].frac_nucleus.to_numpy().reshape(grid, grid),
+                    (patches.loc[c].frac_nucleus + patches.loc[c].frac_cytoplasm).to_numpy().reshape(grid, grid)]
+                for c in cells}
 
     n_cols = 1 + len(readouts)
     fig, axes = plt.subplots(len(MAP_TYPES), n_cols, figsize=(MAP_TILE * n_cols + 0.6, MAP_TILE * len(MAP_TYPES) + 0.3),
@@ -604,6 +609,8 @@ def linear_unseen_maps(encoder: str = "dinobloom", split: str = "test", readouts
         for j, d in enumerate(readouts):
             im = axes[r, j + 1].imshow(tiles[(cid, d)], cmap=DIVERGING, vmin=-lim, vmax=lim,
                                        interpolation="nearest")
+            for field in outlines[cid]:  # nucleus, then cell
+                axes[r, j + 1].contour(field, levels=[0.5], colors=[INK], linewidths=0.6)
             if r == 0:
                 label = DESCRIPTOR_LABEL[d]
                 if len(label) > 16:  # the long names wrap (all-readouts figure); the paper's five fit on one line
