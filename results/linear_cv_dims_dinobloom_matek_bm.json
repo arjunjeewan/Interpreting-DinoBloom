@@ -1,0 +1,351 @@
+{
+  "analysis": "OLS of each descriptor on one embedding position at a time; MAE, MSE and R^2 per position",
+  "r2": "1 - MSE / MSE(training-mean prediction), on the same split",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "n_dims": 768,
+  "test_read": false,
+  "splits": {
+    "file": "data/interim/matek_bm/cv_splits.parquet",
+    "k_folds": 5,
+    "scored": "the 5 validation folds; the 20% hold-out is not read"
+  },
+  "labels": "as linear_cv.py: per cell, the mean of each descriptor over segmenter seeds 0-24 in which the cell passed QC",
+  "model": "y ~ a + b x_j by OLS on the training folds, closed form; embedding as stored, not scaled",
+  "selection": "best position per fold = lowest MAE on that fold's training cells, reported on its validation fold; best_dim is the most frequent of the 5",
+  "references": "baseline (training mean) and all-dims OLS: validation MAE from linear_cv_dinobloom_matek_bm.parquet",
+  "checks": {
+    "baseline_matches_linear_cv": true,
+    "n_sklearn_comparisons": 220,
+    "max_relative_error_vs_sklearn": 4.7628567756419216e-14
+  },
+  "aggregation": "mean and sd (ddof=1) over the 5 folds",
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower",
+  "descriptors": {
+    "nuclear_area": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 6291.412476909614,
+        "sd": 26.41129512540352
+      },
+      "mae_val_all_dims": {
+        "mean": 2241.8540276203557,
+        "sd": 11.627708247958472
+      },
+      "r2_val_all_dims": {
+        "mean": 0.8566704222119436,
+        "sd": 0.0014764580950145613
+      },
+      "best_dim_by_fold": [
+        161,
+        161,
+        161,
+        161,
+        161
+      ],
+      "best_dim": 161,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 5246.084715477315,
+        "sd": 12.892680822829718
+      },
+      "gap_closed_by_best_dim": 0.2581337631058927
+    },
+    "cytoplasmic_area": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 7458.402638069952,
+        "sd": 39.02752433415483
+      },
+      "mae_val_all_dims": {
+        "mean": 3978.8850204565097,
+        "sd": 7.915022525101569
+      },
+      "r2_val_all_dims": {
+        "mean": 0.6763266286731756,
+        "sd": 0.002638073381561115
+      },
+      "best_dim_by_fold": [
+        454,
+        454,
+        454,
+        454,
+        454
+      ],
+      "best_dim": 454,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 6728.695290638413,
+        "sd": 36.31387613979459
+      },
+      "gap_closed_by_best_dim": 0.20971508916573223
+    },
+    "nc_ratio": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.1512931374923942,
+        "sd": 0.0010011824244196565
+      },
+      "mae_val_all_dims": {
+        "mean": 0.07517777329831285,
+        "sd": 0.0001447310973089841
+      },
+      "r2_val_all_dims": {
+        "mean": 0.7272401327419209,
+        "sd": 0.0026247604417573567
+      },
+      "best_dim_by_fold": [
+        91,
+        91,
+        91,
+        91,
+        91
+      ],
+      "best_dim": 91,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.14113280118688626,
+        "sd": 0.0007263347655860127
+      },
+      "gap_closed_by_best_dim": 0.1334860105195161
+    },
+    "nuclear_solidity": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.13553915852187098,
+        "sd": 0.0008426957667872569
+      },
+      "mae_val_all_dims": {
+        "mean": 0.066215945236281,
+        "sd": 0.00034950619997981046
+      },
+      "r2_val_all_dims": {
+        "mean": 0.7221214169070829,
+        "sd": 0.0018281861343928596
+      },
+      "best_dim_by_fold": [
+        568,
+        568,
+        568,
+        568,
+        568
+      ],
+      "best_dim": 568,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.11431261180334476,
+        "sd": 0.0006575715161380844
+      },
+      "gap_closed_by_best_dim": 0.3061968093007963
+    },
+    "form_factor": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.18912608573146766,
+        "sd": 0.000494340433056148
+      },
+      "mae_val_all_dims": {
+        "mean": 0.08244587615350597,
+        "sd": 0.0002225329147363147
+      },
+      "r2_val_all_dims": {
+        "mean": 0.7808512528507866,
+        "sd": 0.0020570127709673165
+      },
+      "best_dim_by_fold": [
+        360,
+        360,
+        360,
+        360,
+        360
+      ],
+      "best_dim": 360,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.16856926360345442,
+        "sd": 0.0008083964478636909
+      },
+      "gap_closed_by_best_dim": 0.19269574187506966
+    },
+    "eccentricity": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.13512244121498676,
+        "sd": 0.0005212034472455274
+      },
+      "mae_val_all_dims": {
+        "mean": 0.09725398253288046,
+        "sd": 0.00030579058809967373
+      },
+      "r2_val_all_dims": {
+        "mean": 0.44829608413598593,
+        "sd": 0.004066766577402203
+      },
+      "best_dim_by_fold": [
+        568,
+        568,
+        568,
+        568,
+        568
+      ],
+      "best_dim": 568,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.12693208291168248,
+        "sd": 0.00039435296717890163
+      },
+      "gap_closed_by_best_dim": 0.21628443798200872
+    },
+    "curvature_variance": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.003104618332313766,
+        "sd": 1.1631851159950024e-05
+      },
+      "mae_val_all_dims": {
+        "mean": 0.0017455055844804155,
+        "sd": 6.879189865704098e-06
+      },
+      "r2_val_all_dims": {
+        "mean": 0.6565953937380539,
+        "sd": 0.004922321217866144
+      },
+      "best_dim_by_fold": [
+        574,
+        574,
+        574,
+        574,
+        574
+      ],
+      "best_dim": 574,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.0028189668308202524,
+        "sd": 1.5185311302422875e-05
+      },
+      "gap_closed_by_best_dim": 0.2101749850767635
+    },
+    "glcm_contrast": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.6878670551547843,
+        "sd": 0.0027136757927600738
+      },
+      "mae_val_all_dims": {
+        "mean": 0.35208988437412,
+        "sd": 0.0015395560740368637
+      },
+      "r2_val_all_dims": {
+        "mean": 0.6556917662554275,
+        "sd": 0.007734638492680005
+      },
+      "best_dim_by_fold": [
+        735,
+        735,
+        735,
+        735,
+        735
+      ],
+      "best_dim": 735,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.6409794716443317,
+        "sd": 0.002879828900933397
+      },
+      "gap_closed_by_best_dim": 0.13963898558511723
+    },
+    "glcm_homogeneity": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.04382014433043942,
+        "sd": 0.0001521540252382132
+      },
+      "mae_val_all_dims": {
+        "mean": 0.020404222836263954,
+        "sd": 7.261885449264685e-05
+      },
+      "r2_val_all_dims": {
+        "mean": 0.7457627369175752,
+        "sd": 0.0023826403734940075
+      },
+      "best_dim_by_fold": [
+        540,
+        540,
+        540,
+        540,
+        540
+      ],
+      "best_dim": 540,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.039121994850803914,
+        "sd": 0.0002154059394519914
+      },
+      "gap_closed_by_best_dim": 0.20063910279183902
+    },
+    "glcm_entropy": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 0.3600330854741746,
+        "sd": 0.001707472931222419
+      },
+      "mae_val_all_dims": {
+        "mean": 0.18306303857447614,
+        "sd": 0.0006270360315868568
+      },
+      "r2_val_all_dims": {
+        "mean": 0.7406915961869671,
+        "sd": 0.0023074600533550555
+      },
+      "best_dim_by_fold": [
+        540,
+        540,
+        540,
+        540,
+        540
+      ],
+      "best_dim": 540,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 0.3299503727054125,
+        "sd": 0.0016652293341721865
+      },
+      "gap_closed_by_best_dim": 0.16998759561730883
+    },
+    "integrated_optical_density": {
+      "n_val_median": 27403,
+      "mae_val_baseline": {
+        "mean": 3002.7023008080696,
+        "sd": 10.709776683959605
+      },
+      "mae_val_all_dims": {
+        "mean": 1266.532459627164,
+        "sd": 6.47698202489289
+      },
+      "r2_val_all_dims": {
+        "mean": 0.8058522648934652,
+        "sd": 0.002555206122100337
+      },
+      "best_dim_by_fold": [
+        161,
+        161,
+        161,
+        161,
+        161
+      ],
+      "best_dim": 161,
+      "best_dim_n_folds": 5,
+      "mae_val_best_dim": {
+        "mean": 2587.6624005247504,
+        "sd": 5.965630049022833
+      },
+      "gap_closed_by_best_dim": 0.2390548956898237
+    }
+  }
+}

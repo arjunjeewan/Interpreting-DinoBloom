@@ -1,0 +1,13 @@
+dataset,split,in_dinobloom_pretraining,source_of_claim,note
+matek_bm,train,yes,arXiv:2404.05022v1 Sec.2+3 (primary),"BMC listed in the 13-dataset cohort (171,373 images). DinoBloom used an unpublished 80/20 split; membership of individual images is unrecoverable."
+matek_bm,val,yes,arXiv:2404.05022v1 Sec.2+3 (primary),Same as train; split boundary unrecoverable.
+matek_bm,test,yes,arXiv:2404.05022v1 Sec.2+3 (primary),Same as train; split boundary unrecoverable.
+raabin,train,yes,"arXiv:2404.05022v1 Sec.2+3 (primary) + exact count identity (10,175 = Train)","DinoBloom's stated Raabin contribution of 10,175 cropped WBCs in 5 classes equals the distributed Train split exactly (212 baso + 744 eos + 2,427 lymph + 561 mono + 6,231 neut = 10,175)."
+raabin,testA,no,"arXiv:2404.05022v1 Sec.2+3 (primary) + exact count identity (10,175 = Train)","INFERRED, not stated: DinoBloom used 10,175 Raabin cells and Train alone accounts for all of them, so TestA (4,339) was not seen. Same device mix as Train, so this is a clean in-distribution held-out set."
+raabin,testB,no,"arXiv:2404.05022v1 Sec.2+3 (primary) + exact count identity (10,175 = Train)","INFERRED, not stated: as testA. Test-B (2,119) is additionally the acquisition-shifted set, so it is both device-shifted AND unseen — the only clean basis for a cross-device generalization claim."
+pbc,train,no,arXiv:2404.05022v1 Sec.2+3 (primary),"Explicitly excluded: 'We train the DinoBloom models on all datasets except the Acevedo dataset, which is kept as external test set.'"
+pbc,val,no,arXiv:2404.05022v1 Sec.2+3 (primary),Explicitly excluded; see train.
+pbc,test,no,arXiv:2404.05022v1 Sec.2+3 (primary),Explicitly excluded; see train.
+hicervix,train,no,arXiv:2404.05022v1 Sec.2+3 (primary),Absent from the 13-dataset cohort. All 13 are peripheral blood or bone marrow; no cervical cytology dataset appears in the pretraining corpus.
+hicervix,val,no,arXiv:2404.05022v1 Sec.2+3 (primary),Absent from the cohort; see train.
+hicervix,test,no,arXiv:2404.05022v1 Sec.2+3 (primary),Absent from the cohort; see train.

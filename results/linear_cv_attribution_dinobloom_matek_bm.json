@@ -1,0 +1,244 @@
+{
+  "analysis": "agreement of Grad-CAM and gradient x activation (each block) with occlusion (two fills)",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "test_read": false,
+  "cells": {
+    "figure": [
+      "matek_bm/BLA/BLA_10204.jpg",
+      "matek_bm/PMO/PMO_07655.jpg",
+      "matek_bm/MYB/MYB_03377.jpg",
+      "matek_bm/MMZ/MMZ_00815.jpg",
+      "matek_bm/NGB/NGB_03081.jpg",
+      "matek_bm/NGS/NGS_01203.jpg"
+    ],
+    "evaluation": [
+      "matek_bm/BLA/BLA_03748.jpg",
+      "matek_bm/BLA/BLA_05675.jpg",
+      "matek_bm/BLA/BLA_09855.jpg",
+      "matek_bm/BLA/BLA_00430.jpg",
+      "matek_bm/BLA/BLA_11362.jpg",
+      "matek_bm/BLA/BLA_06128.jpg",
+      "matek_bm/BLA/BLA_01712.jpg",
+      "matek_bm/BLA/BLA_09012.jpg",
+      "matek_bm/BLA/BLA_11379.jpg",
+      "matek_bm/BLA/BLA_02980.jpg",
+      "matek_bm/PMO/PMO_05445.jpg",
+      "matek_bm/PMO/PMO_09799.jpg",
+      "matek_bm/PMO/PMO_09049.jpg",
+      "matek_bm/PMO/PMO_06468.jpg",
+      "matek_bm/PMO/PMO_09464.jpg",
+      "matek_bm/PMO/PMO_00336.jpg",
+      "matek_bm/PMO/PMO_03955.jpg",
+      "matek_bm/PMO/PMO_01505.jpg",
+      "matek_bm/PMO/PMO_10365.jpg",
+      "matek_bm/PMO/PMO_10042.jpg",
+      "matek_bm/MYB/MYB_00411.jpg",
+      "matek_bm/MYB/MYB_03293.jpg",
+      "matek_bm/MYB/MYB_06433.jpg",
+      "matek_bm/MYB/MYB_04937.jpg",
+      "matek_bm/MYB/MYB_00124.jpg",
+      "matek_bm/MYB/MYB_01740.jpg",
+      "matek_bm/MYB/MYB_01859.jpg",
+      "matek_bm/MYB/MYB_03316.jpg",
+      "matek_bm/MYB/MYB_00779.jpg",
+      "matek_bm/MYB/MYB_03207.jpg",
+      "matek_bm/MMZ/MMZ_01912.jpg",
+      "matek_bm/MMZ/MMZ_00982.jpg",
+      "matek_bm/MMZ/MMZ_01391.jpg",
+      "matek_bm/MMZ/MMZ_00464.jpg",
+      "matek_bm/MMZ/MMZ_02955.jpg",
+      "matek_bm/MMZ/MMZ_00338.jpg",
+      "matek_bm/MMZ/MMZ_00893.jpg",
+      "matek_bm/MMZ/MMZ_01584.jpg",
+      "matek_bm/MMZ/MMZ_01279.jpg",
+      "matek_bm/MMZ/MMZ_01292.jpg",
+      "matek_bm/NGB/NGB_08694.jpg",
+      "matek_bm/NGB/NGB_07685.jpg",
+      "matek_bm/NGB/NGB_04579.jpg",
+      "matek_bm/NGB/NGB_04559.jpg",
+      "matek_bm/NGB/NGB_08514.jpg",
+      "matek_bm/NGB/NGB_00632.jpg",
+      "matek_bm/NGB/NGB_06375.jpg",
+      "matek_bm/NGB/NGB_05900.jpg",
+      "matek_bm/NGB/NGB_03674.jpg",
+      "matek_bm/NGB/NGB_02132.jpg",
+      "matek_bm/NGS/NGS_23168.jpg",
+      "matek_bm/NGS/NGS_02036.jpg",
+      "matek_bm/NGS/NGS_16072.jpg",
+      "matek_bm/NGS/NGS_22156.jpg",
+      "matek_bm/NGS/NGS_22347.jpg",
+      "matek_bm/NGS/NGS_25713.jpg",
+      "matek_bm/NGS/NGS_04345.jpg",
+      "matek_bm/NGS/NGS_20103.jpg",
+      "matek_bm/NGS/NGS_24147.jpg",
+      "matek_bm/NGS/NGS_01603.jpg"
+    ],
+    "selection": "10 per class in ['BLA', 'PMO', 'MYB', 'MMZ', 'NGB', 'NGS'], np.random.default_rng(1) over the sorted labelled, embedded cells of the CV portion, figure cells excluded"
+  },
+  "targets": "those of linear_cv_gradcam.py",
+  "activations": "patch tokens leaving each block's norm1",
+  "occlusion_fills": {
+    "grey": "0 in normalized units",
+    "background": "per-channel median of the border ring"
+  },
+  "median_r_by_method_block_fill_evaluation": [
+    {
+      "method": "gradcam",
+      "block": 0,
+      "background": -0.0038486254777256573,
+      "grey": -0.01511623197912814
+    },
+    {
+      "method": "gradcam",
+      "block": 1,
+      "background": 0.01184303622015527,
+      "grey": -0.005230504450100227
+    },
+    {
+      "method": "gradcam",
+      "block": 2,
+      "background": -0.000460148995793014,
+      "grey": 0.00837498803206568
+    },
+    {
+      "method": "gradcam",
+      "block": 3,
+      "background": 0.013749088960854763,
+      "grey": 0.00959933781909584
+    },
+    {
+      "method": "gradcam",
+      "block": 4,
+      "background": 0.013302744471079993,
+      "grey": 0.0028244849965199173
+    },
+    {
+      "method": "gradcam",
+      "block": 5,
+      "background": 0.07132416646020434,
+      "grey": 0.055368704468722586
+    },
+    {
+      "method": "gradcam",
+      "block": 6,
+      "background": 0.03700186402556209,
+      "grey": 0.028173091309713696
+    },
+    {
+      "method": "gradcam",
+      "block": 7,
+      "background": 0.029688608527454932,
+      "grey": 0.028708671149334643
+    },
+    {
+      "method": "gradcam",
+      "block": 8,
+      "background": 0.052805939682288944,
+      "grey": 0.03967757953617827
+    },
+    {
+      "method": "gradcam",
+      "block": 9,
+      "background": 0.06720736015835913,
+      "grey": 0.04883932246000054
+    },
+    {
+      "method": "gradcam",
+      "block": 10,
+      "background": 0.04973972612334747,
+      "grey": 0.04472328969434386
+    },
+    {
+      "method": "gradcam",
+      "block": 11,
+      "background": 0.04287136122638298,
+      "grey": -0.0002497722480021021
+    },
+    {
+      "method": "gxa",
+      "block": 0,
+      "background": -0.0811421610381742,
+      "grey": -0.0521439597851249
+    },
+    {
+      "method": "gxa",
+      "block": 1,
+      "background": -0.012969247577665637,
+      "grey": -0.0018406518061860873
+    },
+    {
+      "method": "gxa",
+      "block": 2,
+      "background": -0.048061967548420806,
+      "grey": -0.014520592190527981
+    },
+    {
+      "method": "gxa",
+      "block": 3,
+      "background": 0.07916755505732274,
+      "grey": 0.05940710733930733
+    },
+    {
+      "method": "gxa",
+      "block": 4,
+      "background": 0.1124682917447342,
+      "grey": 0.07590829634638727
+    },
+    {
+      "method": "gxa",
+      "block": 5,
+      "background": 0.16105225865271752,
+      "grey": 0.10963158799556791
+    },
+    {
+      "method": "gxa",
+      "block": 6,
+      "background": 0.09140195626170751,
+      "grey": 0.06799820961213174
+    },
+    {
+      "method": "gxa",
+      "block": 7,
+      "background": 0.10145616911824484,
+      "grey": 0.08291202674808752
+    },
+    {
+      "method": "gxa",
+      "block": 8,
+      "background": 0.07016113862483088,
+      "grey": 0.05418998765446384
+    },
+    {
+      "method": "gxa",
+      "block": 9,
+      "background": 0.06553637358692097,
+      "grey": 0.04520734698879896
+    },
+    {
+      "method": "gxa",
+      "block": 10,
+      "background": 0.041207127311663205,
+      "grey": 0.04793391893194924
+    },
+    {
+      "method": "gxa",
+      "block": 11,
+      "background": 0.17542066577936521,
+      "grey": 0.10884682226070427
+    }
+  ],
+  "median_r_between_fills_evaluation": 0.4831952601671219,
+  "checks": {
+    "embedding_cos_min": 0.999985966530721,
+    "block11_gradcam_vs_linear_cv_gradcam_rel": 0.0
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "torch": "2.6.0+cu126"
+  },
+  "device": "Quadro GV100",
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

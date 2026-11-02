@@ -1,0 +1,93 @@
+{
+  "n_seeds": 3,
+  "mode": "film",
+  "runs": [
+    {
+      "seed": 0,
+      "mode": "film",
+      "selected_epoch": 57,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9931134117974175,
+        "nucleus": 0.9657750659518771,
+        "cytoplasm": 0.8872006767325931
+      },
+      "test_dice": {
+        "background": 0.9902746975421906,
+        "nucleus": 0.9650796320703294,
+        "cytoplasm": 0.8813331855667962
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed0.pt"
+    },
+    {
+      "seed": 1,
+      "mode": "film",
+      "selected_epoch": 61,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9924421376652188,
+        "nucleus": 0.9661646584669749,
+        "cytoplasm": 0.8855487770504422
+      },
+      "test_dice": {
+        "background": 0.9900020592742496,
+        "nucleus": 0.9673781726095412,
+        "cytoplasm": 0.8771754370795356
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed1.pt"
+    },
+    {
+      "seed": 2,
+      "mode": "film",
+      "selected_epoch": 56,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.991823822259903,
+        "nucleus": 0.9650183584955003,
+        "cytoplasm": 0.8861359126038022
+      },
+      "test_dice": {
+        "background": 0.9904897742801242,
+        "nucleus": 0.9665250248379178,
+        "cytoplasm": 0.8804500434133742
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed2.pt"
+    }
+  ],
+  "aggregate": {
+    "val_background": {
+      "mean": 0.9924597905741798,
+      "sd": 0.0006449759783998525
+    },
+    "val_nucleus": {
+      "mean": 0.9656526943047842,
+      "sd": 0.0005828653542284191
+    },
+    "val_cytoplasm": {
+      "mean": 0.8862951221289458,
+      "sd": 0.0008373791821181503
+    },
+    "test_background": {
+      "mean": 0.9902555103655214,
+      "sd": 0.00024442297876881887
+    },
+    "test_nucleus": {
+      "mean": 0.9663276098392628,
+      "sd": 0.0011619172362394928
+    },
+    "test_cytoplasm": {
+      "mean": 0.8796528886865685,
+      "sd": 0.002190504477210834
+    }
+  },
+  "selection_rule": "max val mean(nucleus, cytoplasm) Dice; test read once"
+}

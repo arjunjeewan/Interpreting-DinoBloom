@@ -1,0 +1,113 @@
+{
+  "analysis": "region occlusion (nucleus, cytoplasm, rest) of embedding positions and metric readouts",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "test_read": false,
+  "cells": "the figure and evaluation cells of linear_cv_attribution.py",
+  "targets": "those of linear_cv_gradcam.py",
+  "masks": "per-pixel majority label over segmenter seeds 0-24 (src/segment.py), 224 x 224, ties to the lower label, centre component kept",
+  "fills": {
+    "grey": "0 in normalized units",
+    "background": "per-channel median of the border ring"
+  },
+  "region_pixels": {
+    "min": {
+      "nucleus": 4660,
+      "cytoplasm": 821,
+      "rest": 3760
+    },
+    "median": {
+      "nucleus": 12862.0,
+      "cytoplasm": 10865.5,
+      "rest": 24506.5
+    },
+    "cells_with_an_empty_region": 0
+  },
+  "stability_between_fills_evaluation": {
+    "cytoplasm": {
+      "pearson": 0.8560607917790165,
+      "spearman": 0.7517212106236412,
+      "n_pairs": 2580
+    },
+    "nucleus": {
+      "pearson": 0.7777081532822011,
+      "spearman": 0.7137977094318049,
+      "n_pairs": 2580
+    },
+    "rest": {
+      "pearson": 0.8743619507390262,
+      "spearman": 0.8279696773944092,
+      "n_pairs": 2580
+    }
+  },
+  "median_share_by_group_evaluation": [
+    {
+      "fill": "background",
+      "group": "position best",
+      "cytoplasm": 0.3391091824,
+      "nucleus": 0.3770219684,
+      "rest": 0.2252486646
+    },
+    {
+      "fill": "background",
+      "group": "position worst",
+      "cytoplasm": 0.3277581334,
+      "nucleus": 0.3704047501,
+      "rest": 0.2379281223
+    },
+    {
+      "fill": "background",
+      "group": "random",
+      "cytoplasm": 0.3341963291,
+      "nucleus": 0.3691267073,
+      "rest": 0.2535275221
+    },
+    {
+      "fill": "background",
+      "group": "readout",
+      "cytoplasm": 0.3082846105,
+      "nucleus": 0.4734550118,
+      "rest": 0.1357726455
+    },
+    {
+      "fill": "grey",
+      "group": "position best",
+      "cytoplasm": 0.3496713638,
+      "nucleus": 0.3446928561,
+      "rest": 0.2580489814
+    },
+    {
+      "fill": "grey",
+      "group": "position worst",
+      "cytoplasm": 0.3389447629,
+      "nucleus": 0.3432945609,
+      "rest": 0.2708490491
+    },
+    {
+      "fill": "grey",
+      "group": "random",
+      "cytoplasm": 0.3216288686,
+      "nucleus": 0.3408979177,
+      "rest": 0.2778552771
+    },
+    {
+      "fill": "grey",
+      "group": "readout",
+      "cytoplasm": 0.3406123221,
+      "nucleus": 0.3775753975,
+      "rest": 0.1842697114
+    }
+  ],
+  "checks": {
+    "embedding_cos_min": 0.9999859673538525,
+    "segmenter_seeds": 25
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "torch": "2.6.0+cu126"
+  },
+  "device": "Quadro GV100",
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

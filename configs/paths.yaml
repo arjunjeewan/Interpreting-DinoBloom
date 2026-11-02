@@ -1,0 +1,25 @@
+# All paths are relative to the project root and resolved by src/env.load_config.
+# Nothing here may be an absolute path or contain "~".
+paths:
+  raw: data/raw
+  interim: data/interim
+  masks: data/masks
+  embeddings: data/embeddings
+  weights: data/weights
+  results: results
+  figures: figures
+  logs: logs
+
+datasets:
+  matek_bm:   {raw: data/raw/matek_bm,   interim: data/interim/matek_bm}
+  raabin:     {raw: data/raw/raabin,     interim: data/interim/raabin}
+  hicervix:   {raw: data/raw/hicervix,   interim: data/interim/hicervix}
+  pbc:        {raw: data/raw/pbc,        interim: data/interim/pbc}
+
+# Inference precision is pinned here and in protocol.md. Volta (sm_70) has fp16
+# tensor cores but no bfloat16: never write torch.bfloat16 anywhere in this repo.
+inference:
+  autocast_dtype: float16
+  storage_dtype: float32
+  batch_size: 96
+  num_workers: 8

@@ -1,0 +1,89 @@
+{
+  "analysis": "signed Grad-CAM and occlusion maps of embedding positions and metric readouts",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "test_read": false,
+  "cells": [
+    {
+      "cell_id": "matek_bm/BLA/BLA_10204.jpg",
+      "class_label": "BLA",
+      "shard": "data/raw/matek_bm/hf_mirror/data/train-00002-of-00012.parquet",
+      "shard_row": 1356
+    },
+    {
+      "cell_id": "matek_bm/PMO/PMO_07655.jpg",
+      "class_label": "PMO",
+      "shard": "data/raw/matek_bm/hf_mirror/data/train-00011-of-00012.parquet",
+      "shard_row": 7959
+    },
+    {
+      "cell_id": "matek_bm/MYB/MYB_03377.jpg",
+      "class_label": "MYB",
+      "shard": "data/raw/matek_bm/hf_mirror/data/train-00007-of-00012.parquet",
+      "shard_row": 2093
+    },
+    {
+      "cell_id": "matek_bm/MMZ/MMZ_00815.jpg",
+      "class_label": "MMZ",
+      "shard": "data/raw/matek_bm/hf_mirror/data/train-00006-of-00012.parquet",
+      "shard_row": 5804
+    },
+    {
+      "cell_id": "matek_bm/NGB/NGB_03081.jpg",
+      "class_label": "NGB",
+      "shard": "data/raw/matek_bm/hf_mirror/data/train-00007-of-00012.parquet",
+      "shard_row": 7120
+    },
+    {
+      "cell_id": "matek_bm/NGS/NGS_01203.jpg",
+      "class_label": "NGS",
+      "shard": "data/raw/matek_bm/hf_mirror/data/train-00008-of-00012.parquet",
+      "shard_row": 2149
+    }
+  ],
+  "selection": "one cell per class in ['BLA', 'PMO', 'MYB', 'MMZ', 'NGB', 'NGS'], np.random.default_rng(0).choice over the sorted labelled, embedded cells of the CV portion (cv_splits.parquet)",
+  "targets": "position: each descriptor's best and worst position by |fold-mean single beta|; readout: fold-mean joint_768 weights; random: control positions",
+  "gradcam": "signed; activations = blocks[-1].norm1 output, patch tokens only; channel weight = mean gradient over patches",
+  "occlusion": "14x14 patch set to 0 in normalized units; map = T(original) - T(occluded)",
+  "checks": {
+    "embedding_cos_min": 0.999985966530721,
+    "embedding_max_abs_diff": 0.0270310640335083,
+    "min_cos_guard": 0.99
+  },
+  "agreement_gradcam_vs_occlusion_r": {
+    "position": {
+      "count": 132.0,
+      "min": -0.5005038822,
+      "50%": -0.0028098498,
+      "max": 0.6711447638
+    },
+    "random": {
+      "count": 60.0,
+      "min": -0.5019965499,
+      "50%": -0.067089619,
+      "max": 0.5847428069
+    },
+    "readout": {
+      "count": 66.0,
+      "min": -0.5469210759,
+      "50%": -0.0253757098,
+      "max": 0.4379917813
+    }
+  },
+  "specificity_median_abs_r_between_position_maps": {
+    "matek_bm/BLA/BLA_10204.jpg": 0.2291017991616071,
+    "matek_bm/PMO/PMO_07655.jpg": 0.20677636261766286,
+    "matek_bm/MYB/MYB_03377.jpg": 0.20537684057873604,
+    "matek_bm/MMZ/MMZ_00815.jpg": 0.22846353381481155,
+    "matek_bm/NGB/NGB_03081.jpg": 0.2654850491364148,
+    "matek_bm/NGS/NGS_01203.jpg": 0.21183593678954088
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "torch": "2.6.0+cu126"
+  },
+  "device": "Quadro GV100",
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

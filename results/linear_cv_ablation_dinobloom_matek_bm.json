@@ -1,0 +1,44 @@
+{
+  "analysis": "OLS on the first K positions of an order, K = 1..768; validation R^2",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "n_dims": 768,
+  "test_read": false,
+  "splits": {
+    "file": "data/interim/matek_bm/cv_splits.parquet",
+    "k_folds": 5,
+    "scored": "the 5 validation folds; the 20% hold-out is not read"
+  },
+  "labels": "as linear_cv.py: per cell, the mean of each descriptor over segmenter seeds 0-24 in which the cell passed QC",
+  "orders": {
+    "top": "|Pearson r| with the descriptor on the fold's training cells, strongest first",
+    "bottom": "the same ranking, weakest first",
+    "random": "10 orders from np.random.default_rng(0), shared by all folds and descriptors"
+  },
+  "score": "R^2 = 1 - SSE / SSE(training mean) on the validation fold",
+  "k_768": "linear_cv's validation MSE (its Gram matrix is singular)",
+  "columns": {
+    "dim": "the position added at step k",
+    "draw": "random order index; -1 for top and bottom"
+  },
+  "weights": {
+    "file": "linear_cv_ablation_weights_dinobloom_matek_bm.parquet",
+    "models": "top-K, K in [1, 2, 4, 8, 16, 32, 64]",
+    "beta": "w * sd(x_j) / sd(y), sds (ddof=1) on the fold's training cells"
+  },
+  "checks": {
+    "max_rel_baseline_sse_vs_linear_cv": 1.3100631690576847e-14,
+    "max_rel_k767_mse_vs_linear_cv": 1.567899968746289e-07,
+    "max_rel_val_mse_vs_sklearn": 8.004708007547379e-14,
+    "n_sklearn_refits": 20,
+    "max_abs_r_vs_linear_cv_weights": 6.050715484207103e-15
+  },
+  "aggregation": "one row per fold model; summarize as mean and sd (ddof=1) over the 5 folds",
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

@@ -1,0 +1,47 @@
+{
+  "analysis": "OLS on the first K positions of an order, K = 1..768, on PBC; R^2 on the scored fold",
+  "protocol": "protocol.md \u00a716",
+  "encoder": "dinobloom",
+  "dataset": "pbc",
+  "n_dims": 768,
+  "scored": "test",
+  "test_read": true,
+  "commit": "32b0f59f06934326322f88b7b813e3490961055e",
+  "excluded_classes": [
+    "platelet"
+  ],
+  "readouts": "linear_unseen.py's five, each fit on 4/5 of the train fold (training_subfolds)",
+  "labels": "as linear_cv.py: per cell, the mean of each descriptor over segmenter seeds 0-24 in which the cell passed QC",
+  "orders": {
+    "top": "|Pearson r| with the descriptor on the readout's training cells, strongest first",
+    "bottom": "the same ranking, weakest first",
+    "random": "10 orders from np.random.default_rng(0), shared by all readouts and descriptors"
+  },
+  "score": "R^2 = 1 - SSE / SSE(training mean) on the scored fold",
+  "k_768": "linear_unseen's r2_pooled (its Gram matrix is singular)",
+  "columns": {
+    "fold": "the readout",
+    "dim": "the position added at step k",
+    "draw": "random order index; -1 for top and bottom"
+  },
+  "weights": {
+    "file": "linear_unseen_ablation_weights_dinobloom_pbc_test.parquet",
+    "models": "top-K, K in [1, 2, 4, 8, 16, 32, 64]",
+    "beta": "w * sd(x_j) / sd(y), sds (ddof=1) on the readout's training cells"
+  },
+  "checks": {
+    "max_abs_k767_r2_vs_linear_unseen": 4.420438878778983e-08,
+    "atol_k767_r2": 0.0005,
+    "max_rel_k767_sse_vs_linear_unseen": 8.826343236290057e-07,
+    "max_rel_mse_vs_sklearn": 4.007905118896815e-14,
+    "n_sklearn_refits": 20
+  },
+  "aggregation": "one row per readout; summarize as mean and sd (ddof=1) over the 5 readouts",
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

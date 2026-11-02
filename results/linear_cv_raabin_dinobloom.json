@@ -1,0 +1,99 @@
+{
+  "analysis": "Matek's top-8 single-position correlations per metric, re-measured on Raabin, pooled and within cell type, with ground-truth and U-Net masks",
+  "encoder": "dinobloom",
+  "matek": "top-8 positions per metric from linear_cv_ablation (identical in all folds); r = the fold-mean single-position beta of linear_cv_weights; hold-out not read",
+  "raabin_folds_read": [
+    "train"
+  ],
+  "embeddings": "stored CLS (data/embeddings), the project's preprocessing",
+  "arms": {
+    "gt": {
+      "n": 530,
+      "cell_types": {
+        "neutrophil": 145,
+        "monocyte": 144,
+        "lymphocyte": 127,
+        "eosinophil": 114
+      }
+    },
+    "unet": {
+      "n": 7123,
+      "cell_types": {
+        "neutrophil": 4362,
+        "lymphocyte": 1699,
+        "eosinophil": 521,
+        "monocyte": 393,
+        "basophil": 148
+      }
+    }
+  },
+  "gt_class_label_mismatches_vs_index": 0,
+  "agreement_with_matek": {
+    "r_gt_pooled": {
+      "pearson_with_matek": 0.05750474280917529,
+      "spearman_with_matek": 0.0006692261632207392,
+      "same_sign_as_matek": 52,
+      "pairs": 88
+    },
+    "r_gt_within": {
+      "pearson_with_matek": 0.2648848063712434,
+      "spearman_with_matek": 0.24329893276038186,
+      "same_sign_as_matek": 61,
+      "pairs": 88
+    },
+    "r_unet_pooled": {
+      "pearson_with_matek": 0.1267254161500514,
+      "spearman_with_matek": 0.11038709450177875,
+      "same_sign_as_matek": 50,
+      "pairs": 88
+    },
+    "r_unet_within": {
+      "pearson_with_matek": 0.43432919789635005,
+      "spearman_with_matek": 0.3647987038145892,
+      "same_sign_as_matek": 62,
+      "pairs": 88
+    }
+  },
+  "example": {
+    "descriptor": "nuclear_area",
+    "position": 161,
+    "r_matek": -0.5331463907074415,
+    "r_gt_pooled": 0.4477114101331926,
+    "r_gt_within": -0.04915338896428929,
+    "r_unet_pooled": 0.2925382247451697,
+    "r_unet_within": -0.04623242524750111,
+    "gt_by_type": {
+      "eosinophil": {
+        "n": 114,
+        "r": -0.36763154801809617,
+        "mean_position": -0.16358756430022287,
+        "mean_nuclear_area": 20091.991228070176
+      },
+      "lymphocyte": {
+        "n": 127,
+        "r": -0.01207489374739854,
+        "mean_position": -0.5638342632024776,
+        "mean_nuclear_area": 18352.03149606299
+      },
+      "monocyte": {
+        "n": 144,
+        "r": 0.07609968934685554,
+        "mean_position": 0.7769871646693597,
+        "mean_nuclear_area": 32364.805555555555
+      },
+      "neutrophil": {
+        "n": 145,
+        "r": -0.02125497141143459,
+        "mean_position": -0.5197514341164637,
+        "mean_nuclear_area": 16254.917241379311
+      }
+    }
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

@@ -1,0 +1,473 @@
+{
+  "n_seeds": 22,
+  "mode": "film",
+  "runs": [
+    {
+      "seed": 3,
+      "mode": "film",
+      "selected_epoch": 77,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.993119650416904,
+        "nucleus": 0.960017333428065,
+        "cytoplasm": 0.8850166896979014
+      },
+      "test_dice": {
+        "background": 0.9907901949352689,
+        "nucleus": 0.9654829634560479,
+        "cytoplasm": 0.877572649055057
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed3.pt"
+    },
+    {
+      "seed": 4,
+      "mode": "film",
+      "selected_epoch": 72,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9932774603366852,
+        "nucleus": 0.9646129111448923,
+        "cytoplasm": 0.8860665327972836
+      },
+      "test_dice": {
+        "background": 0.9915693998336792,
+        "nucleus": 0.9678498340977563,
+        "cytoplasm": 0.8897050850921207
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed4.pt"
+    },
+    {
+      "seed": 5,
+      "mode": "film",
+      "selected_epoch": 75,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9930152926180098,
+        "nucleus": 0.9637984799014198,
+        "cytoplasm": 0.8883760472138723
+      },
+      "test_dice": {
+        "background": 0.9906512730651431,
+        "nucleus": 0.9666920602321625,
+        "cytoplasm": 0.8815560705131955
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed5.pt"
+    },
+    {
+      "seed": 6,
+      "mode": "film",
+      "selected_epoch": 58,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9928433067268796,
+        "nucleus": 0.9625612629784478,
+        "cytoplasm": 0.8892198403676351
+      },
+      "test_dice": {
+        "background": 0.9909207357300652,
+        "nucleus": 0.9653281966845194,
+        "cytoplasm": 0.8826079335477617
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed6.pt"
+    },
+    {
+      "seed": 7,
+      "mode": "film",
+      "selected_epoch": 67,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9933088587390052,
+        "nucleus": 0.964526504278183,
+        "cytoplasm": 0.8856247663497925
+      },
+      "test_dice": {
+        "background": 0.9913767576217651,
+        "nucleus": 0.9684537318017747,
+        "cytoplasm": 0.8832607269287109
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed7.pt"
+    },
+    {
+      "seed": 8,
+      "mode": "film",
+      "selected_epoch": 78,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9909772409333123,
+        "nucleus": 0.9633448819319407,
+        "cytoplasm": 0.8760994142956204
+      },
+      "test_dice": {
+        "background": 0.9890847868389554,
+        "nucleus": 0.9640452729331123,
+        "cytoplasm": 0.8692352043257819
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed8.pt"
+    },
+    {
+      "seed": 9,
+      "mode": "film",
+      "selected_epoch": 53,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9927664366033342,
+        "nucleus": 0.9647883044348823,
+        "cytoplasm": 0.8867124617099762
+      },
+      "test_dice": {
+        "background": 0.9901331331994798,
+        "nucleus": 0.9646637704637315,
+        "cytoplasm": 0.8789002862241533
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed9.pt"
+    },
+    {
+      "seed": 10,
+      "mode": "film",
+      "selected_epoch": 76,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9933500223689609,
+        "nucleus": 0.9640293055110507,
+        "cytoplasm": 0.8895706137021383
+      },
+      "test_dice": {
+        "background": 0.9904863205220964,
+        "nucleus": 0.9664786524242825,
+        "cytoplasm": 0.8819418383969201
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed10.pt"
+    },
+    {
+      "seed": 11,
+      "mode": "film",
+      "selected_epoch": 76,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9936150776015388,
+        "nucleus": 0.9643638398912218,
+        "cytoplasm": 0.893040719959471
+      },
+      "test_dice": {
+        "background": 0.9919396473301781,
+        "nucleus": 0.9690015349123213,
+        "cytoplasm": 0.8910204536385007
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed11.pt"
+    },
+    {
+      "seed": 12,
+      "mode": "film",
+      "selected_epoch": 66,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9933390319347382,
+        "nucleus": 0.9659579892953237,
+        "cytoplasm": 0.8923219177458022
+      },
+      "test_dice": {
+        "background": 0.9907611774073707,
+        "nucleus": 0.9671066502730051,
+        "cytoplasm": 0.8811803460121155
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed12.pt"
+    },
+    {
+      "seed": 13,
+      "mode": "film",
+      "selected_epoch": 58,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9922096729278564,
+        "nucleus": 0.9646008047792647,
+        "cytoplasm": 0.8834537433253394
+      },
+      "test_dice": {
+        "background": 0.9899519549475776,
+        "nucleus": 0.9628898567623563,
+        "cytoplasm": 0.865951355960634
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed13.pt"
+    },
+    {
+      "seed": 14,
+      "mode": "film",
+      "selected_epoch": 69,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9925724565982819,
+        "nucleus": 0.9645857612291971,
+        "cytoplasm": 0.8804208603170183
+      },
+      "test_dice": {
+        "background": 0.9903627071115706,
+        "nucleus": 0.9664721720748477,
+        "cytoplasm": 0.8755598266919454
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed14.pt"
+    },
+    {
+      "seed": 15,
+      "mode": "film",
+      "selected_epoch": 63,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9923315611150529,
+        "nucleus": 0.964851952261395,
+        "cytoplasm": 0.8842504024505615
+      },
+      "test_dice": {
+        "background": 0.9898774955007765,
+        "nucleus": 0.9648151728841994,
+        "cytoplasm": 0.8744683994187249
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed15.pt"
+    },
+    {
+      "seed": 16,
+      "mode": "film",
+      "selected_epoch": 71,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.991618447833591,
+        "nucleus": 0.9651353988382552,
+        "cytoplasm": 0.880604217449824
+      },
+      "test_dice": {
+        "background": 0.9896494812435574,
+        "nucleus": 0.964919239282608,
+        "cytoplasm": 0.8680060340298547
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed16.pt"
+    },
+    {
+      "seed": 17,
+      "mode": "film",
+      "selected_epoch": 62,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9924214084943136,
+        "nucleus": 0.9648101793395149,
+        "cytoplasm": 0.8831630018022325
+      },
+      "test_dice": {
+        "background": 0.9901104602548811,
+        "nucleus": 0.9671985871262021,
+        "cytoplasm": 0.8801766799555885
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed17.pt"
+    },
+    {
+      "seed": 18,
+      "mode": "film",
+      "selected_epoch": 73,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9936441878477732,
+        "nucleus": 0.9649088647630479,
+        "cytoplasm": 0.8922837674617767
+      },
+      "test_dice": {
+        "background": 0.9912316335572137,
+        "nucleus": 0.9690671331352658,
+        "cytoplasm": 0.8869961500167847
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed18.pt"
+    },
+    {
+      "seed": 19,
+      "mode": "film",
+      "selected_epoch": 63,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9930940369764963,
+        "nucleus": 0.9643633994791243,
+        "cytoplasm": 0.8850690556897057
+      },
+      "test_dice": {
+        "background": 0.9911255306667752,
+        "nucleus": 0.9674591786331601,
+        "cytoplasm": 0.8864428434107039
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed19.pt"
+    },
+    {
+      "seed": 20,
+      "mode": "film",
+      "selected_epoch": 58,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9929171568817563,
+        "nucleus": 0.9666196604569753,
+        "cytoplasm": 0.8882979386382632
+      },
+      "test_dice": {
+        "background": 0.9901603957017263,
+        "nucleus": 0.9651965565151639,
+        "cytoplasm": 0.877299964427948
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed20.pt"
+    },
+    {
+      "seed": 21,
+      "mode": "film",
+      "selected_epoch": 58,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9932863944106631,
+        "nucleus": 0.9654079377651215,
+        "cytoplasm": 0.8902628819147745
+      },
+      "test_dice": {
+        "background": 0.990748835934533,
+        "nucleus": 0.9666253858142428,
+        "cytoplasm": 0.8795335723294152
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed21.pt"
+    },
+    {
+      "seed": 22,
+      "mode": "film",
+      "selected_epoch": 49,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9925944573349423,
+        "nucleus": 0.9660323129759895,
+        "cytoplasm": 0.8895781536897024
+      },
+      "test_dice": {
+        "background": 0.9893341428703732,
+        "nucleus": 0.9635915656884512,
+        "cytoplasm": 0.8668515880902609
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed22.pt"
+    },
+    {
+      "seed": 23,
+      "mode": "film",
+      "selected_epoch": 66,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9933695163991716,
+        "nucleus": 0.9647098282972971,
+        "cytoplasm": 0.8899125787946913
+      },
+      "test_dice": {
+        "background": 0.9908370110723708,
+        "nucleus": 0.9668492012553744,
+        "cytoplasm": 0.8846527139345804
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed23.pt"
+    },
+    {
+      "seed": 24,
+      "mode": "film",
+      "selected_epoch": 77,
+      "n_train": 645,
+      "n_val": 141,
+      "n_test": 141,
+      "test_films_also_in_train": 0,
+      "val_dice": {
+        "background": 0.9928137593799167,
+        "nucleus": 0.9634824991226196,
+        "cytoplasm": 0.8880661030610403
+      },
+      "test_dice": {
+        "background": 0.9904607799318101,
+        "nucleus": 0.9647949404186673,
+        "cytoplasm": 0.8786454300085703
+      },
+      "checkpoint": "data/checkpoints/segment/unet_seed24.pt"
+    }
+  ],
+  "aggregate": {
+    "val_background": {
+      "mean": 0.9928402470217811,
+      "sd": 0.0006457913992746792
+    },
+    "val_nucleus": {
+      "mean": 0.9644322460046925,
+      "sd": 0.0013383113506194155
+    },
+    "val_cytoplasm": {
+      "mean": 0.8867005322015646,
+      "sd": 0.004260366734566903
+    },
+    "test_background": {
+      "mean": 0.9905256297853257,
+      "sd": 0.0007111489870593569
+    },
+    "test_nucleus": {
+      "mean": 0.9661355298576932,
+      "sd": 0.001700938814879916
+    },
+    "test_cytoplasm": {
+      "mean": 0.8791620523640605,
+      "sd": 0.007017274084791349
+    }
+  },
+  "selection_rule": "max val mean(nucleus, cytoplasm) Dice; test read once"
+}

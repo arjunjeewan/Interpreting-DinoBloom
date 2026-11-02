@@ -1,0 +1,1600 @@
+{
+  "analysis": "linear_cv readouts fit per dataset and scored on cells DinoBloom never saw",
+  "protocol": "protocol.md \u00a716",
+  "encoder": "dinobloom",
+  "dataset": "pbc",
+  "test_fold": "test",
+  "test_read": true,
+  "commit": "32b0f59f06934326322f88b7b813e3490961055e",
+  "excluded_classes": [
+    "platelet"
+  ],
+  "never_read": [],
+  "cells": {
+    "train": 10321,
+    "val": 2212,
+    "test": 2211,
+    "labelled": {
+      "val": 2212,
+      "test": 2211
+    }
+  },
+  "readouts": "5, each fit on 4/5 of the train fold (StratifiedKFold by cell type, seed 0)",
+  "labels": {
+    "descriptors": "mean over segmenter seeds 0-24 in which the cell passed QC (qc_pass and all descriptors finite); units as in src/morphometry.py",
+    "n_labelled": 14744,
+    "unlabelled_by_class": {},
+    "n_seeds_median": {
+      "val": 25.0,
+      "test": 25.0
+    }
+  },
+  "models": {
+    "regression": "LinearRegression (OLS), one per descriptor; baseline the training mean",
+    "classification": "LogisticRegression at sklearn defaults (L2, C=1.0, lbfgs), max_iter=1000; baseline DummyClassifier(strategy='prior')",
+    "features": "embedding as stored, not scaled"
+  },
+  "statistics": {
+    "r2_pooled": "1 - MSE / MSE of the training mean",
+    "r2_type_only": "the same for predicting each cell's training type mean",
+    "r2_within": "R^2 after centring target and prediction on the scored fold's type means",
+    "ceiling_within": "Spearman-Brown reliability of the label inside cell types, stepped up to the median number of QC-passing seeds per scored cell",
+    "rho_pooled": "Spearman rho of prediction and label over all scored cells",
+    "rho_by_type": "Spearman rho inside each cell type with at least 3 cells"
+  },
+  "testB": "R^2 statistics kept only for nc_ratio, nuclear_solidity, eccentricity; testB is imaged at another scale",
+  "aggregation": "mean and sd (ddof=1) over the 5 readouts",
+  "descriptors": {
+    "val": {
+      "nuclear_area": {
+        "r2_pooled": {
+          "mean": 0.914978487413919,
+          "sd": 0.0009510430670087821
+        },
+        "r2_type_only": {
+          "mean": 0.5896198064613708,
+          "sd": 0.00017321283662299688
+        },
+        "r2_within": {
+          "mean": 0.7933959922802263,
+          "sd": 0.0021536374463546177
+        },
+        "ceiling_within": {
+          "mean": 0.9945874914724862,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9517785947172779,
+          "sd": 0.0004906170731264751
+        }
+      },
+      "cytoplasmic_area": {
+        "r2_pooled": {
+          "mean": 0.9337654078089299,
+          "sd": 0.0007851904842428773
+        },
+        "r2_type_only": {
+          "mean": 0.5702418277115612,
+          "sd": 0.0005603251891119736
+        },
+        "r2_within": {
+          "mean": 0.8447609271875434,
+          "sd": 0.0017657640714382095
+        },
+        "ceiling_within": {
+          "mean": 0.9936745677364558,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9711816248974721,
+          "sd": 0.0004362328177504284
+        }
+      },
+      "nc_ratio": {
+        "r2_pooled": {
+          "mean": 0.9451195642107907,
+          "sd": 0.0011398680503186813
+        },
+        "r2_type_only": {
+          "mean": 0.7264152797993335,
+          "sd": 0.00030812053469387755
+        },
+        "r2_within": {
+          "mean": 0.7990648110507786,
+          "sd": 0.00405372378518913
+        },
+        "ceiling_within": {
+          "mean": 0.9929454782075802,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.950839882841897,
+          "sd": 0.0010904216172891636
+        }
+      },
+      "nuclear_solidity": {
+        "r2_pooled": {
+          "mean": 0.8501275382786616,
+          "sd": 0.001647374166481541
+        },
+        "r2_type_only": {
+          "mean": 0.603325871740158,
+          "sd": 0.00025368749041372574
+        },
+        "r2_within": {
+          "mean": 0.6226012748296907,
+          "sd": 0.0039610857557940485
+        },
+        "ceiling_within": {
+          "mean": 0.9832035688791942,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9195147197782101,
+          "sd": 0.001035788914408413
+        }
+      },
+      "form_factor": {
+        "r2_pooled": {
+          "mean": 0.8480763851366204,
+          "sd": 0.001696460702186343
+        },
+        "r2_type_only": {
+          "mean": 0.5216039515118611,
+          "sd": 0.00042615050077530147
+        },
+        "r2_within": {
+          "mean": 0.6814247530421609,
+          "sd": 0.0037099565599191973
+        },
+        "ceiling_within": {
+          "mean": 0.9855298175480411,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.8960464578228955,
+          "sd": 0.0025740872513979178
+        }
+      },
+      "eccentricity": {
+        "r2_pooled": {
+          "mean": 0.6776962102656132,
+          "sd": 0.0030885728415857776
+        },
+        "r2_type_only": {
+          "mean": 0.39844620721548296,
+          "sd": 0.00039313075678393424
+        },
+        "r2_within": {
+          "mean": 0.4646980312178348,
+          "sd": 0.005076759196654154
+        },
+        "ceiling_within": {
+          "mean": 0.9917984935374584,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.8357139563857106,
+          "sd": 0.0008708786766359922
+        }
+      },
+      "curvature_variance": {
+        "r2_pooled": {
+          "mean": 0.8351666530472673,
+          "sd": 0.0010144026977451784
+        },
+        "r2_type_only": {
+          "mean": 0.514550250288973,
+          "sd": 0.00019762827834145688
+        },
+        "r2_within": {
+          "mean": 0.6600787080106112,
+          "sd": 0.0020156272841246195
+        },
+        "ceiling_within": {
+          "mean": 0.9781494658897503,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.911452057372243,
+          "sd": 0.0007556751245828418
+        }
+      },
+      "glcm_contrast": {
+        "r2_pooled": {
+          "mean": 0.7481057221605405,
+          "sd": 0.0038990844713600284
+        },
+        "r2_type_only": {
+          "mean": 0.3042570272549344,
+          "sd": 0.00041734705490959856
+        },
+        "r2_within": {
+          "mean": 0.6380638827016618,
+          "sd": 0.005365091928552387
+        },
+        "ceiling_within": {
+          "mean": 0.9814214264076992,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.8309841314426313,
+          "sd": 0.0017401085553761665
+        }
+      },
+      "glcm_homogeneity": {
+        "r2_pooled": {
+          "mean": 0.889351369999374,
+          "sd": 0.0020390330734847287
+        },
+        "r2_type_only": {
+          "mean": 0.5350649882632795,
+          "sd": 0.00021394272681692634
+        },
+        "r2_within": {
+          "mean": 0.7621634041049108,
+          "sd": 0.004476332281743153
+        },
+        "ceiling_within": {
+          "mean": 0.9929417853164824,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.924055284880426,
+          "sd": 0.001147066882408351
+        }
+      },
+      "glcm_entropy": {
+        "r2_pooled": {
+          "mean": 0.8913681504616877,
+          "sd": 0.0015053624158430133
+        },
+        "r2_type_only": {
+          "mean": 0.5687872957685117,
+          "sd": 0.00020011319907248883
+        },
+        "r2_within": {
+          "mean": 0.748498953291369,
+          "sd": 0.0035534319781107336
+        },
+        "ceiling_within": {
+          "mean": 0.9911185606106372,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9146143470377304,
+          "sd": 0.0014611922210591881
+        }
+      },
+      "integrated_optical_density": {
+        "r2_pooled": {
+          "mean": 0.8795078844822471,
+          "sd": 0.0008237343239971969
+        },
+        "r2_type_only": {
+          "mean": 0.5426500029478037,
+          "sd": 0.00011203695382517672
+        },
+        "r2_within": {
+          "mean": 0.7366538772560121,
+          "sd": 0.0016474738002200194
+        },
+        "ceiling_within": {
+          "mean": 0.9947427693475316,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9262491328861844,
+          "sd": 0.0013397222103375404
+        }
+      }
+    },
+    "test": {
+      "nuclear_area": {
+        "r2_pooled": {
+          "mean": 0.9351382222722027,
+          "sd": 0.0005364933719800483
+        },
+        "r2_type_only": {
+          "mean": 0.6258583606888493,
+          "sd": 0.0001460956519044646
+        },
+        "r2_within": {
+          "mean": 0.8270706999563707,
+          "sd": 0.0016202445826866926
+        },
+        "ceiling_within": {
+          "mean": 0.994017690813821,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9553137715034492,
+          "sd": 0.0007007100766610472
+        }
+      },
+      "cytoplasmic_area": {
+        "r2_pooled": {
+          "mean": 0.9260702230299648,
+          "sd": 0.0007339858183965683
+        },
+        "r2_type_only": {
+          "mean": 0.5423621424493119,
+          "sd": 0.00023224813185974313
+        },
+        "r2_within": {
+          "mean": 0.8385120862797578,
+          "sd": 0.001499360375199116
+        },
+        "ceiling_within": {
+          "mean": 0.993965099674144,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9673986085768833,
+          "sd": 0.00045478428333520004
+        }
+      },
+      "nc_ratio": {
+        "r2_pooled": {
+          "mean": 0.9491579708845048,
+          "sd": 0.0009505829430312023
+        },
+        "r2_type_only": {
+          "mean": 0.7042977289183336,
+          "sd": 0.00046090306239903275
+        },
+        "r2_within": {
+          "mean": 0.8269446506431851,
+          "sd": 0.0031707057476648764
+        },
+        "ceiling_within": {
+          "mean": 0.9933588685905029,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9527276300010545,
+          "sd": 0.0011545024699058696
+        }
+      },
+      "nuclear_solidity": {
+        "r2_pooled": {
+          "mean": 0.8533360713773872,
+          "sd": 0.002156939594779403
+        },
+        "r2_type_only": {
+          "mean": 0.6077719296314363,
+          "sd": 0.00028252119612739534
+        },
+        "r2_within": {
+          "mean": 0.626288135195737,
+          "sd": 0.005312421663990279
+        },
+        "ceiling_within": {
+          "mean": 0.9815263327506625,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9170645682209235,
+          "sd": 0.0015055543901742498
+        }
+      },
+      "form_factor": {
+        "r2_pooled": {
+          "mean": 0.8543234832858762,
+          "sd": 0.0012269837034476411
+        },
+        "r2_type_only": {
+          "mean": 0.5092900660654184,
+          "sd": 0.0001635960634709329
+        },
+        "r2_within": {
+          "mean": 0.7030712370592493,
+          "sd": 0.0025182242184169125
+        },
+        "ceiling_within": {
+          "mean": 0.9853279714998788,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9006437056569864,
+          "sd": 0.001561033321120006
+        }
+      },
+      "eccentricity": {
+        "r2_pooled": {
+          "mean": 0.7004419344471289,
+          "sd": 0.0024064053411887707
+        },
+        "r2_type_only": {
+          "mean": 0.41432366705105855,
+          "sd": 7.8903035368766e-05
+        },
+        "r2_within": {
+          "mean": 0.4887293529113574,
+          "sd": 0.004032648235401756
+        },
+        "ceiling_within": {
+          "mean": 0.9917547019455606,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.8505508874162258,
+          "sd": 0.0011440229972813532
+        }
+      },
+      "curvature_variance": {
+        "r2_pooled": {
+          "mean": 0.8542704106912964,
+          "sd": 0.0012154282142652353
+        },
+        "r2_type_only": {
+          "mean": 0.5161157796187603,
+          "sd": 0.0003694372959941828
+        },
+        "r2_within": {
+          "mean": 0.6987253270098494,
+          "sd": 0.0024107378182323443
+        },
+        "ceiling_within": {
+          "mean": 0.9787539635888672,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9219593717981157,
+          "sd": 0.0004236126280089741
+        }
+      },
+      "glcm_contrast": {
+        "r2_pooled": {
+          "mean": 0.7695140219384897,
+          "sd": 0.0023503102126423447
+        },
+        "r2_type_only": {
+          "mean": 0.2665344054118407,
+          "sd": 0.000985869220993491
+        },
+        "r2_within": {
+          "mean": 0.6854669417268834,
+          "sd": 0.003261411221533049
+        },
+        "ceiling_within": {
+          "mean": 0.9818047253629324,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.8411239007155924,
+          "sd": 0.0014456571330834246
+        }
+      },
+      "glcm_homogeneity": {
+        "r2_pooled": {
+          "mean": 0.8939443138689536,
+          "sd": 0.0005259414299533273
+        },
+        "r2_type_only": {
+          "mean": 0.5279953788086459,
+          "sd": 0.0004704675171544395
+        },
+        "r2_within": {
+          "mean": 0.7760268726548933,
+          "sd": 0.0011890669393482545
+        },
+        "ceiling_within": {
+          "mean": 0.992756725043861,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.929918889636608,
+          "sd": 0.0009066829067031543
+        }
+      },
+      "glcm_entropy": {
+        "r2_pooled": {
+          "mean": 0.8909068872130852,
+          "sd": 0.0005562674857028778
+        },
+        "r2_type_only": {
+          "mean": 0.5762058190449546,
+          "sd": 0.00039716289730391043
+        },
+        "r2_within": {
+          "mean": 0.7429028330101852,
+          "sd": 0.001383592954306899
+        },
+        "ceiling_within": {
+          "mean": 0.9908314536852523,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9184714757353426,
+          "sd": 0.0008750361759016605
+        }
+      },
+      "integrated_optical_density": {
+        "r2_pooled": {
+          "mean": 0.9058619271715862,
+          "sd": 0.001018202905712163
+        },
+        "r2_type_only": {
+          "mean": 0.5952820233051785,
+          "sd": 0.00023535591329946
+        },
+        "r2_within": {
+          "mean": 0.7681447851089886,
+          "sd": 0.002739443136039862
+        },
+        "ceiling_within": {
+          "mean": 0.9942874034544376,
+          "sd": 0.0
+        },
+        "rho_pooled": {
+          "mean": 0.9309297799254569,
+          "sd": 0.0010995036060818706
+        }
+      }
+    }
+  },
+  "rho_by_type": {
+    "val": {
+      "nuclear_area": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.893160939627936,
+          "rho_sd": 0.004215877301986349,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7431389053022681,
+          "rho_sd": 0.00634501937078898,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8433286658090566,
+          "rho_sd": 0.006404485788694384,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9541208036056045,
+          "rho_sd": 0.0009235508765299759,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8575177124613085,
+          "rho_sd": 0.004682365475556057,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.855519681304189,
+          "rho_sd": 0.0022356909922939317,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7694639592437887,
+          "rho_sd": 0.0039762802763592155,
+          "n": 499
+        }
+      ],
+      "cytoplasmic_area": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8307980453953123,
+          "rho_sd": 0.005311879561834745,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.9354177688930744,
+          "rho_sd": 0.0030785553202585655,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8182629220219868,
+          "rho_sd": 0.01079905643186245,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9437107031567388,
+          "rho_sd": 0.0014528163549206048,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.6979111821970259,
+          "rho_sd": 0.008075232584531522,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.9601692326414846,
+          "rho_sd": 0.00151729256937447,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.9138407320665426,
+          "rho_sd": 0.0030894056902412217,
+          "n": 499
+        }
+      ],
+      "nc_ratio": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8429764348926897,
+          "rho_sd": 0.004644104148269051,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7947705995518326,
+          "rho_sd": 0.006341682669424955,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8487306610808165,
+          "rho_sd": 0.006688245905951539,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9609810233079094,
+          "rho_sd": 0.0012765620520949403,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8898276255037418,
+          "rho_sd": 0.003516857016185916,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.9214419296594236,
+          "rho_sd": 0.0030210321731055467,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7353943356592703,
+          "rho_sd": 0.006091801795068828,
+          "n": 499
+        }
+      ],
+      "nuclear_solidity": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8336608304622264,
+          "rho_sd": 0.006730099875746725,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6631508434250611,
+          "rho_sd": 0.005095553793951645,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.7141452548733886,
+          "rho_sd": 0.009361389196900483,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8907488029699776,
+          "rho_sd": 0.0020623333080542717,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.5115090506812271,
+          "rho_sd": 0.0210431844882619,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.7373156235952125,
+          "rho_sd": 0.015772854240410847,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.8280518241301881,
+          "rho_sd": 0.00205202686468399,
+          "n": 499
+        }
+      ],
+      "form_factor": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8249216993037873,
+          "rho_sd": 0.0057621211787537,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6304850784316411,
+          "rho_sd": 0.010546937144017741,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8533894574667107,
+          "rho_sd": 0.0022039193610561393,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8474752951426288,
+          "rho_sd": 0.005114460464016299,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8391617258748859,
+          "rho_sd": 0.006462086584181524,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.6131126735727359,
+          "rho_sd": 0.014145533384518447,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7599035178791317,
+          "rho_sd": 0.00176425373183027,
+          "n": 499
+        }
+      ],
+      "eccentricity": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.5497724164196977,
+          "rho_sd": 0.02367059797678571,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7299896732540792,
+          "rho_sd": 0.0037770491158532716,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.6850682862596434,
+          "rho_sd": 0.007110961453500578,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8055688989085347,
+          "rho_sd": 0.0032332276353573995,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.5067933606109496,
+          "rho_sd": 0.02096595062829083,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.5991642679210512,
+          "rho_sd": 0.011428272568581949,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.6594166453388703,
+          "rho_sd": 0.005115013885697719,
+          "n": 499
+        }
+      ],
+      "curvature_variance": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.7708440418530562,
+          "rho_sd": 0.00728927493704184,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6957815342423351,
+          "rho_sd": 0.006066949585976388,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8057611669569639,
+          "rho_sd": 0.00788238355495822,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8193884256454161,
+          "rho_sd": 0.0034094933530563125,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.7937808229267336,
+          "rho_sd": 0.0032610607738937434,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.6109059931800287,
+          "rho_sd": 0.007051059776778532,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7921223652123524,
+          "rho_sd": 0.003788023073948223,
+          "n": 499
+        }
+      ],
+      "glcm_contrast": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8514543515997428,
+          "rho_sd": 0.004941064159203248,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7062118637113043,
+          "rho_sd": 0.004822332704837844,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.6466228754226387,
+          "rho_sd": 0.010127641751453231,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.7530535229400017,
+          "rho_sd": 0.004768266404007715,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.7746210677285761,
+          "rho_sd": 0.008239845300725017,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.8304812475629655,
+          "rho_sd": 0.00729108790159492,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.6568083443996426,
+          "rho_sd": 0.008837072856415721,
+          "n": 499
+        }
+      ],
+      "glcm_homogeneity": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8842447935789025,
+          "rho_sd": 0.006453217477689084,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6739911754964968,
+          "rho_sd": 0.0029958154248062568,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.9012733233911272,
+          "rho_sd": 0.0031053749411868664,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8140201822546331,
+          "rho_sd": 0.005664624840968135,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.9021612750079374,
+          "rho_sd": 0.004769667460529684,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.8066977779212747,
+          "rho_sd": 0.006848268796981813,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7251244271675882,
+          "rho_sd": 0.008146897671131002,
+          "n": 499
+        }
+      ],
+      "glcm_entropy": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8501286980496054,
+          "rho_sd": 0.008523244350212589,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.649279451625324,
+          "rho_sd": 0.004722828230780963,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.9084616902509459,
+          "rho_sd": 0.0017597761453089103,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8087469746252021,
+          "rho_sd": 0.003261660450770295,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.9135493977990128,
+          "rho_sd": 0.0034661102387675002,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.7454081924096154,
+          "rho_sd": 0.0055468078640971445,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7602986599705434,
+          "rho_sd": 0.006925302987132133,
+          "n": 499
+        }
+      ],
+      "integrated_optical_density": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8492690792778029,
+          "rho_sd": 0.00805291092714611,
+          "n": 183
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6563950841364627,
+          "rho_sd": 0.008904700770386537,
+          "n": 468
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8423807409599922,
+          "rho_sd": 0.003715460674618648,
+          "n": 233
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9342248599840947,
+          "rho_sd": 0.0014340764916315103,
+          "n": 434
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.7429704070044619,
+          "rho_sd": 0.004685111106850927,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.7718044113739037,
+          "rho_sd": 0.007873690213061158,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.6776065480358306,
+          "rho_sd": 0.008439307199987067,
+          "n": 499
+        }
+      ]
+    },
+    "test": {
+      "nuclear_area": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8761929312422927,
+          "rho_sd": 0.004590707535500483,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7677120544449181,
+          "rho_sd": 0.004791944473033491,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8339371003423096,
+          "rho_sd": 0.008077958452235013,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9685034048316391,
+          "rho_sd": 0.0012344577787236505,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8646029633802481,
+          "rho_sd": 0.006765436562714631,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.8428098479787204,
+          "rho_sd": 0.005279945833329307,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7452836830819694,
+          "rho_sd": 0.006793688209472751,
+          "n": 500
+        }
+      ],
+      "cytoplasmic_area": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8377790672329211,
+          "rho_sd": 0.006477362573689619,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.9245316449670788,
+          "rho_sd": 0.005418903136563614,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8067891114361438,
+          "rho_sd": 0.005717056603591238,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9501090624940774,
+          "rho_sd": 0.001431969329468727,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.7305392189551233,
+          "rho_sd": 0.008836447231330716,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.9546009969178499,
+          "rho_sd": 0.001215816414287585,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.889154443017772,
+          "rho_sd": 0.0025694999109369915,
+          "n": 500
+        }
+      ],
+      "nc_ratio": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8579293363099177,
+          "rho_sd": 0.005799187867366127,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.8074924315956933,
+          "rho_sd": 0.0089083532882697,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8856541268410438,
+          "rho_sd": 0.004425916812949477,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9631692706473043,
+          "rho_sd": 0.0007606840098108253,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.9139391538630738,
+          "rho_sd": 0.0038947496319435833,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.9180652243561882,
+          "rho_sd": 0.000887785071414747,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7434964587858351,
+          "rho_sd": 0.005842586355320009,
+          "n": 500
+        }
+      ],
+      "nuclear_solidity": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8190504722159464,
+          "rho_sd": 0.008800752164977844,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7355816684257743,
+          "rho_sd": 0.005411461407325494,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.7276050425821032,
+          "rho_sd": 0.011288116592108932,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8670546420443859,
+          "rho_sd": 0.0016898154461554647,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.6832218772985008,
+          "rho_sd": 0.011247699715266235,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.7908032217285372,
+          "rho_sd": 0.00901255159748921,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7935635774543097,
+          "rho_sd": 0.003038957090771926,
+          "n": 500
+        }
+      ],
+      "form_factor": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.7944050696156484,
+          "rho_sd": 0.010243802637019673,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6737460084281637,
+          "rho_sd": 0.018729526346929832,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8575372533342044,
+          "rho_sd": 0.005553797236589242,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8504311037311008,
+          "rho_sd": 0.000631698257532369,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8995086246965606,
+          "rho_sd": 0.0006903672052842458,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.6742366028298161,
+          "rho_sd": 0.00872757214220249,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.8013152052608211,
+          "rho_sd": 0.005561312456322839,
+          "n": 500
+        }
+      ],
+      "eccentricity": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.5247985779278235,
+          "rho_sd": 0.022890534261315085,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7206884484953797,
+          "rho_sd": 0.005014693420189858,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.6638212608761668,
+          "rho_sd": 0.009481751414285346,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8341860841447538,
+          "rho_sd": 0.004169092947656294,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.44890244254432277,
+          "rho_sd": 0.018164932183709237,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.7094525892792835,
+          "rho_sd": 0.006514448596539639,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7176401569606278,
+          "rho_sd": 0.008499010801889676,
+          "n": 500
+        }
+      ],
+      "curvature_variance": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.7916469184289128,
+          "rho_sd": 0.002689075386079316,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.73994748362781,
+          "rho_sd": 0.0040281199914178716,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.806918462623657,
+          "rho_sd": 0.008440942918911459,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8199283024534323,
+          "rho_sd": 0.002346044846568277,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8165196455568704,
+          "rho_sd": 0.0051673934673734994,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.6832550584764094,
+          "rho_sd": 0.011930286469181024,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.8269194868779476,
+          "rho_sd": 0.0023494723368784323,
+          "n": 500
+        }
+      ],
+      "glcm_contrast": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8593963956521696,
+          "rho_sd": 0.0029721609354513377,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7357652612893352,
+          "rho_sd": 0.004989177289321274,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.6770087393736941,
+          "rho_sd": 0.008317178505366911,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.7737109093109134,
+          "rho_sd": 0.006036470698434372,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.7246765552172671,
+          "rho_sd": 0.014495966605498194,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.8074863215618876,
+          "rho_sd": 0.007834757891282004,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.696116525266101,
+          "rho_sd": 0.007063377606271837,
+          "n": 500
+        }
+      ],
+      "glcm_homogeneity": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8593856465063784,
+          "rho_sd": 0.0016543042875261636,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7811418481681598,
+          "rho_sd": 0.004355465122779239,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.9023615721262604,
+          "rho_sd": 0.001540841206063914,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.8187824829393952,
+          "rho_sd": 0.005808246362535678,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.898425349670708,
+          "rho_sd": 0.0024677887849258173,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.7225692366152477,
+          "rho_sd": 0.010554189908809748,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7720434785739142,
+          "rho_sd": 0.004038808686611017,
+          "n": 500
+        }
+      ],
+      "glcm_entropy": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.837574833462887,
+          "rho_sd": 0.005009145738630189,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.7324096663492498,
+          "rho_sd": 0.0073749705908667225,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.9049841530380229,
+          "rho_sd": 0.0007807081403971598,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.7906961718058655,
+          "rho_sd": 0.004047037446230005,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.901918822052868,
+          "rho_sd": 0.004472932591419269,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.6933834358647033,
+          "rho_sd": 0.008833264954973481,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.7843323149292597,
+          "rho_sd": 0.004154284836387186,
+          "n": 500
+        }
+      ],
+      "integrated_optical_density": [
+        {
+          "class_label": "basophil",
+          "rho_mean": 0.8074394041788299,
+          "rho_sd": 0.011576776975253814,
+          "n": 182
+        },
+        {
+          "class_label": "eosinophil",
+          "rho_mean": 0.6543461739940037,
+          "rho_sd": 0.008276951298419592,
+          "n": 467
+        },
+        {
+          "class_label": "erythroblast",
+          "rho_mean": 0.8453084727910832,
+          "rho_sd": 0.009349045864816366,
+          "n": 232
+        },
+        {
+          "class_label": "ig",
+          "rho_mean": 0.9375711763616776,
+          "rho_sd": 0.001312460532614104,
+          "n": 435
+        },
+        {
+          "class_label": "lymphocyte",
+          "rho_mean": 0.8206934990559661,
+          "rho_sd": 0.008064363353177813,
+          "n": 182
+        },
+        {
+          "class_label": "monocyte",
+          "rho_mean": 0.777444671556051,
+          "rho_sd": 0.005462198020410415,
+          "n": 213
+        },
+        {
+          "class_label": "neutrophil",
+          "rho_mean": 0.660251761007044,
+          "rho_sd": 0.0093100772378308,
+          "n": 500
+        }
+      ]
+    }
+  },
+  "class_label": {
+    "val": {
+      "logistic": {
+        "log_loss": {
+          "mean": 0.05007448031902132,
+          "sd": 0.002182823723224799
+        },
+        "accuracy": {
+          "mean": 0.9867992766726944,
+          "sd": 0.0008695924078513393
+        },
+        "balanced_accuracy": {
+          "mean": 0.9879241310369308,
+          "sd": 0.0007463293540858351
+        }
+      },
+      "baseline": {
+        "log_loss": {
+          "mean": 1.8581683895345287,
+          "sd": 7.41441458523266e-08
+        },
+        "accuracy": {
+          "mean": 0.2255877034358047,
+          "sd": 0.0
+        },
+        "balanced_accuracy": {
+          "mean": 0.14285714285714285,
+          "sd": 0.0
+        }
+      }
+    },
+    "test": {
+      "logistic": {
+        "log_loss": {
+          "mean": 0.08847085422710313,
+          "sd": 0.005573929182530961
+        },
+        "accuracy": {
+          "mean": 0.982722749886929,
+          "sd": 0.0008699857106138142
+        },
+        "balanced_accuracy": {
+          "mean": 0.9852013279900433,
+          "sd": 0.0010587767368783717
+        }
+      },
+      "baseline": {
+        "log_loss": {
+          "mean": 1.8575694764036155,
+          "sd": 3.0449815763600453e-07
+        },
+        "accuracy": {
+          "mean": 0.2261420171867933,
+          "sd": 0.0
+        },
+        "balanced_accuracy": {
+          "mean": 0.14285714285714285,
+          "sd": 0.0
+        }
+      }
+    }
+  },
+  "logistic_n_iter": [
+    44,
+    40,
+    38,
+    49,
+    42
+  ],
+  "logistic_converged": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "checks": {
+    "max_abs_r2_within_of_type_only": 2.220446049250313e-16,
+    "max_abs_rebuilt_seed_mean_label": 5.4569682106375694e-12,
+    "max_class_spread_over_training_subfolds": 1
+  },
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "sklearn": "1.9.0"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

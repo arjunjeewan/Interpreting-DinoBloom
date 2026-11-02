@@ -1,0 +1,105 @@
+{
+  "analysis": "per-position weights of linear models of each descriptor",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "n_dims": 768,
+  "test_read": false,
+  "splits": {
+    "file": "data/interim/matek_bm/cv_splits.parquet",
+    "k_folds": 5,
+    "used": "each fold's training cells; validation folds only for the MSE check; the 20% hold-out is not read"
+  },
+  "labels": "as linear_cv.py: per cell, the mean of each descriptor over segmenter seeds 0-24 in which the cell passed QC",
+  "models": {
+    "joint_768": "OLS on all positions (sklearn LinearRegression), weights as returned",
+    "joint_767": "OLS refitted without position 38, the main position of the null direction; NaN there",
+    "single": "y ~ a + b x_j, one OLS per position, closed form"
+  },
+  "columns": {
+    "w": "raw weight: descriptor units per embedding unit",
+    "beta": "w * sd(x_j) / sd(y), sds (ddof=1) on the fold's training cells; for single, the Pearson correlation"
+  },
+  "null_direction": [
+    {
+      "fold": 0,
+      "eigenvalue_ratio": -2.0953497584102614e-17,
+      "dropped_position": 38,
+      "share_on_dropped": 0.9875996486613419,
+      "sd_at_dropped": 0.030280054104650404,
+      "sd_median": 1.5225637735401163,
+      "sd_rank_of_dropped": 1,
+      "ln_scale_at_dropped": -0.007121373899281025,
+      "abs_cos_with_inverse_ln_scale": 1.0000000000000002
+    },
+    {
+      "fold": 1,
+      "eigenvalue_ratio": -7.436657228279235e-18,
+      "dropped_position": 38,
+      "share_on_dropped": 0.9875996488723219,
+      "sd_at_dropped": 0.030285169887693718,
+      "sd_median": 1.5219561618068833,
+      "sd_rank_of_dropped": 1,
+      "ln_scale_at_dropped": -0.007121373899281025,
+      "abs_cos_with_inverse_ln_scale": 1.0000000000000002
+    },
+    {
+      "fold": 2,
+      "eigenvalue_ratio": 7.176220577601351e-17,
+      "dropped_position": 38,
+      "share_on_dropped": 0.9875996488762565,
+      "sd_at_dropped": 0.030261210796373266,
+      "sd_median": 1.5221513554070316,
+      "sd_rank_of_dropped": 1,
+      "ln_scale_at_dropped": -0.007121373899281025,
+      "abs_cos_with_inverse_ln_scale": 1.0000000000000002
+    },
+    {
+      "fold": 3,
+      "eigenvalue_ratio": 5.908482003437788e-17,
+      "dropped_position": 38,
+      "share_on_dropped": 0.9875996487302803,
+      "sd_at_dropped": 0.030227865696460136,
+      "sd_median": 1.5231621320800102,
+      "sd_rank_of_dropped": 1,
+      "ln_scale_at_dropped": -0.007121373899281025,
+      "abs_cos_with_inverse_ln_scale": 1.000000000000001
+    },
+    {
+      "fold": 4,
+      "eigenvalue_ratio": 7.893920677623838e-17,
+      "dropped_position": 38,
+      "share_on_dropped": 0.9875996486545784,
+      "sd_at_dropped": 0.030226634995214694,
+      "sd_median": 1.5209621696830555,
+      "sd_rank_of_dropped": 1,
+      "ln_scale_at_dropped": -0.007121373899281025,
+      "abs_cos_with_inverse_ln_scale": 0.9999999999999994
+    }
+  ],
+  "ln_scale_source": {
+    "file": "data/weights/timm_vit_base_patch14_224.dinobloom/model.safetensors",
+    "key": "norm.weight"
+  },
+  "ln_scale_summary": {
+    "median_abs": 1.7067075371742249,
+    "position_of_smallest_abs": 38
+  },
+  "checks": {
+    "rank_both_joint_fits": 767,
+    "max_rel_val_mse_diff_vs_linear_cv": {
+      "joint_768": 0.0,
+      "joint_767": 8.055045519483883e-11
+    },
+    "max_abs_beta_err_single_vs_sklearn": 2.6367796834847468e-15,
+    "max_abs_beta_err_single_vs_pearson": 2.4424906541753444e-15,
+    "n_single_pairs": 55
+  },
+  "aggregation": "one row per fold model; summarize as mean and sd (ddof=1) over the 5 folds",
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.0"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

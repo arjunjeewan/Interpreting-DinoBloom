@@ -1,0 +1,1787 @@
+{
+  "analysis": "within-cell-type validation R^2 of the joint_768 readouts, beside the pooled and type-only R^2 and a label-reliability ceiling",
+  "encoder": "dinobloom",
+  "dataset": "matek_bm",
+  "test_read": false,
+  "splits": "linear_cv.py's five CV folds; each scored by the model trained without it",
+  "centring": "each validation fold's own cell-type means, for target and prediction",
+  "ceiling": "Spearman-Brown reliability of the seed-mean label inside cell types, stepped up to the median number of QC-passing seeds per validation cell",
+  "per_type": "Spearman rho inside each cell type with at least 3 validation cells in a fold",
+  "descriptors": {
+    "nuclear_area": {
+      "r2_pooled": {
+        "mean": 0.856670422211943,
+        "sd": 0.0014764580950145036
+      },
+      "r2_type_only": {
+        "mean": 0.30154556910923536,
+        "sd": 0.0033221503106863914
+      },
+      "r2_within": {
+        "mean": 0.7953884156636292,
+        "sd": 0.00269093193809657
+      },
+      "ceiling_within": {
+        "mean": 0.9974142383154219,
+        "sd": 3.2256671542247e-05
+      }
+    },
+    "cytoplasmic_area": {
+      "r2_pooled": {
+        "mean": 0.6763266286731747,
+        "sd": 0.0026380733815598457
+      },
+      "r2_type_only": {
+        "mean": 0.086769466027466,
+        "sd": 0.002604512951486528
+      },
+      "r2_within": {
+        "mean": 0.6457550199823421,
+        "sd": 0.0032709882162580573
+      },
+      "ceiling_within": {
+        "mean": 0.9914149713696089,
+        "sd": 0.00012091793684247118
+      }
+    },
+    "nc_ratio": {
+      "r2_pooled": {
+        "mean": 0.72724013274192,
+        "sd": 0.002624760441757453
+      },
+      "r2_type_only": {
+        "mean": 0.20317912334522722,
+        "sd": 0.00338830191540104
+      },
+      "r2_within": {
+        "mean": 0.6579820423838759,
+        "sd": 0.0036784898502311633
+      },
+      "ceiling_within": {
+        "mean": 0.9920735620129546,
+        "sd": 0.00013926468453362187
+      }
+    },
+    "nuclear_solidity": {
+      "r2_pooled": {
+        "mean": 0.722121416907082,
+        "sd": 0.0018281861343920095
+      },
+      "r2_type_only": {
+        "mean": 0.1538577882106489,
+        "sd": 0.0017979062857156121
+      },
+      "r2_within": {
+        "mean": 0.6718845927740908,
+        "sd": 0.002494268699213125
+      },
+      "ceiling_within": {
+        "mean": 0.9875716224596645,
+        "sd": 0.00014334994580803085
+      }
+    },
+    "form_factor": {
+      "r2_pooled": {
+        "mean": 0.7808512528507869,
+        "sd": 0.002057012770968098
+      },
+      "r2_type_only": {
+        "mean": 0.18808201368525657,
+        "sd": 0.0012807250649750426
+      },
+      "r2_within": {
+        "mean": 0.7305913920551819,
+        "sd": 0.0027991569674199173
+      },
+      "ceiling_within": {
+        "mean": 0.9927780437337242,
+        "sd": 0.00010921487009821237
+      }
+    },
+    "eccentricity": {
+      "r2_pooled": {
+        "mean": 0.44829608413598665,
+        "sd": 0.004066766577401581
+      },
+      "r2_type_only": {
+        "mean": 0.08997011881586085,
+        "sd": 0.0030292502068356287
+      },
+      "r2_within": {
+        "mean": 0.39396141346416275,
+        "sd": 0.006024053249030537
+      },
+      "ceiling_within": {
+        "mean": 0.986633644564073,
+        "sd": 0.00017168633868080028
+      }
+    },
+    "curvature_variance": {
+      "r2_pooled": {
+        "mean": 0.6565953937380538,
+        "sd": 0.004922321217865545
+      },
+      "r2_type_only": {
+        "mean": 0.16959350510448945,
+        "sd": 0.0018007497322958448
+      },
+      "r2_within": {
+        "mean": 0.5867170276759418,
+        "sd": 0.006222080833062164
+      },
+      "ceiling_within": {
+        "mean": 0.9817114117558011,
+        "sd": 0.00010746872796504246
+      }
+    },
+    "glcm_contrast": {
+      "r2_pooled": {
+        "mean": 0.6556917662554272,
+        "sd": 0.007734638492680663
+      },
+      "r2_type_only": {
+        "mean": 0.21702624628921557,
+        "sd": 0.004842050237679221
+      },
+      "r2_within": {
+        "mean": 0.560685065769215,
+        "sd": 0.010347591972268689
+      },
+      "ceiling_within": {
+        "mean": 0.9859911078905252,
+        "sd": 0.00035490495755123
+      }
+    },
+    "glcm_homogeneity": {
+      "r2_pooled": {
+        "mean": 0.7457627369175758,
+        "sd": 0.0023826403734945665
+      },
+      "r2_type_only": {
+        "mean": 0.20547208853296714,
+        "sd": 0.002929605224487959
+      },
+      "r2_within": {
+        "mean": 0.6805587236150283,
+        "sd": 0.003330482055076962
+      },
+      "ceiling_within": {
+        "mean": 0.9918655300221084,
+        "sd": 0.00012309806403259127
+      }
+    },
+    "glcm_entropy": {
+      "r2_pooled": {
+        "mean": 0.7406915961869671,
+        "sd": 0.002307460053355628
+      },
+      "r2_type_only": {
+        "mean": 0.2167892288667043,
+        "sd": 0.0033640513828130363
+      },
+      "r2_within": {
+        "mean": 0.6698544909401803,
+        "sd": 0.0037829777528692074
+      },
+      "ceiling_within": {
+        "mean": 0.9922215457066412,
+        "sd": 6.737318528533023e-05
+      }
+    },
+    "integrated_optical_density": {
+      "r2_pooled": {
+        "mean": 0.8058522648934657,
+        "sd": 0.0025552061221003615
+      },
+      "r2_type_only": {
+        "mean": 0.24820616571569545,
+        "sd": 0.004523454765609605
+      },
+      "r2_within": {
+        "mean": 0.742485056171019,
+        "sd": 0.002181657141422396
+      },
+      "ceiling_within": {
+        "mean": 0.9968669984456249,
+        "sd": 4.369070827860236e-05
+      }
+    }
+  },
+  "rho_by_type": {
+    "nuclear_area": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.9159030120874941,
+        "rho_sd": 0.002151415248279889,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.9046233925290874,
+        "rho_sd": 0.015297976801652388,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.9130745954101289,
+        "rho_sd": 0.0054922669448635225,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.9173491685826622,
+        "rho_sd": 0.003486509099353839,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.8626111983553546,
+        "rho_sd": 0.007138741309568976,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.8428571428571431,
+        "rho_sd": 0.10826135756561574,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.7578548690115854,
+        "rho_sd": 0.05825729752843312,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.3042857142857143,
+        "rho_sd": 0.26184198381809576,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.806060606060606,
+        "rho_sd": 0.11751951169494133,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8835893520589082,
+        "rho_sd": 0.0059306326821950885,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.8632944613243335,
+        "rho_sd": 0.011151407127328263,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.8461424068958678,
+        "rho_sd": 0.011366519022998452,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.8812323674822533,
+        "rho_sd": 0.011934002813748696,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.8401326608420199,
+        "rho_sd": 0.010841787537315342,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.8254328750629094,
+        "rho_sd": 0.0052716804915036225,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.9173238565316841,
+        "rho_sd": 0.005085653755340687,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8889993832870798,
+        "rho_sd": 0.017042087187143656,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.8843166443473425,
+        "rho_sd": 0.012015425177267915,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.8670624259323795,
+        "rho_sd": 0.00990226417384214,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.8591216004475422,
+        "rho_sd": 0.008358624020260672,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "cytoplasmic_area": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.7465264563781538,
+        "rho_sd": 0.010403398017924318,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.7696197474703291,
+        "rho_sd": 0.028664480423750062,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8295533088496855,
+        "rho_sd": 0.007463682682615686,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.8166726046853553,
+        "rho_sd": 0.00812304738506034,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.7973033511564721,
+        "rho_sd": 0.014088908274289632,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.7500000000000001,
+        "rho_sd": 0.1367753011080483,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.8401930904915981,
+        "rho_sd": 0.014266200392292393,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.5257142857142858,
+        "rho_sd": 0.2854731124978037,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.8012121212121212,
+        "rho_sd": 0.06852104165640363,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8662221181146696,
+        "rho_sd": 0.00350620351009436,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.788174892472542,
+        "rho_sd": 0.031155431982489695,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.821313394421405,
+        "rho_sd": 0.00869740264276787,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7828280210180575,
+        "rho_sd": 0.010673453360694616,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.812634064074734,
+        "rho_sd": 0.011413816496397649,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.8189957270576528,
+        "rho_sd": 0.007573017560252289,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.8415906615407547,
+        "rho_sd": 0.013134323624132214,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8534828862164663,
+        "rho_sd": 0.03295947767530254,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.7576440637182739,
+        "rho_sd": 0.03247549617393439,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.7817710121451131,
+        "rho_sd": 0.01277257281597991,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.7876907110419115,
+        "rho_sd": 0.012034695796465851,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "nc_ratio": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.7479348590611912,
+        "rho_sd": 0.010461409504432312,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.8167101157670661,
+        "rho_sd": 0.035723672280132415,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8127060580224275,
+        "rho_sd": 0.00934201532447087,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.8135786099454055,
+        "rho_sd": 0.0043798903806878215,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.7788465114964733,
+        "rho_sd": 0.012695149071248647,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.8238095238095239,
+        "rho_sd": 0.08222046023729533,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.7714819695230144,
+        "rho_sd": 0.02228626173930537,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.5371428571428573,
+        "rho_sd": 0.2879554954275727,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.793939393939394,
+        "rho_sd": 0.1457068518808644,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8466202374746933,
+        "rho_sd": 0.00549760228207447,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.7932862859139029,
+        "rho_sd": 0.016655652983273282,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.7937192265882791,
+        "rho_sd": 0.018791880026981893,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7915967470489973,
+        "rho_sd": 0.011530609924667888,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.7846461726753022,
+        "rho_sd": 0.003426197248135153,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.7858844063809168,
+        "rho_sd": 0.009276277250306888,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.8381559962359807,
+        "rho_sd": 0.01370868974064759,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.7976842429848906,
+        "rho_sd": 0.07346098978940598,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.7615545106158407,
+        "rho_sd": 0.03478715777252934,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.8032119130851931,
+        "rho_sd": 0.015391865877956802,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.7978319950704251,
+        "rho_sd": 0.012816472015531492,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "nuclear_solidity": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.8345554597396688,
+        "rho_sd": 0.0074148992637944715,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.8165975563526084,
+        "rho_sd": 0.04041874615785643,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8361078314926045,
+        "rho_sd": 0.007855145560681932,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.814362616387563,
+        "rho_sd": 0.008458809293362556,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.7283265812434696,
+        "rho_sd": 0.013065931346341786,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.8261904761904763,
+        "rho_sd": 0.11591106137750559,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.7148259576244651,
+        "rho_sd": 0.04446092374594666,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.7185714285714286,
+        "rho_sd": 0.2786446790140755,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.8,
+        "rho_sd": 0.09847319278346622,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8538269206695741,
+        "rho_sd": 0.00344792607338933,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.7929967268576334,
+        "rho_sd": 0.03345485724931113,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.8102670813873057,
+        "rho_sd": 0.013830569209517748,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7739294118551888,
+        "rho_sd": 0.018363228742779392,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.7934898958331613,
+        "rho_sd": 0.007250344135669935,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.8208726142347134,
+        "rho_sd": 0.008481390960690189,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.7871770141038841,
+        "rho_sd": 0.012297342349993426,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8048334875115634,
+        "rho_sd": 0.05730791277751978,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.7738068747827855,
+        "rho_sd": 0.02661545807095878,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.7872661242476454,
+        "rho_sd": 0.012481203658910292,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.8096461238963201,
+        "rho_sd": 0.010378626136808504,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "form_factor": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.882584899138482,
+        "rho_sd": 0.0032173483687579635,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.8395138949639869,
+        "rho_sd": 0.033074474507132634,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8738668463517432,
+        "rho_sd": 0.005821751171220536,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.8687123627882644,
+        "rho_sd": 0.00538303842814586,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.6911478037498947,
+        "rho_sd": 0.019311788451121276,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.730952380952381,
+        "rho_sd": 0.07788298682760066,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.7491006940820374,
+        "rho_sd": 0.04227710609532284,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.7342857142857144,
+        "rho_sd": 0.11664965862420204,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.7557575757575757,
+        "rho_sd": 0.15719067165185666,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8904425782900548,
+        "rho_sd": 0.002006898586110163,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.8139562386548725,
+        "rho_sd": 0.014280825884325405,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.8120844125467501,
+        "rho_sd": 0.005098796579838799,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7724536777914558,
+        "rho_sd": 0.01608798752962575,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.8295877705073151,
+        "rho_sd": 0.00641461687094913,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.8343092802379942,
+        "rho_sd": 0.003881752497249322,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.8316375489654393,
+        "rho_sd": 0.011869796089477419,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8281699044094974,
+        "rho_sd": 0.08000926026049315,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.8189458584560594,
+        "rho_sd": 0.023673407372156126,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.783576300967279,
+        "rho_sd": 0.005911879462877207,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.7463269638150083,
+        "rho_sd": 0.012992023081453497,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "eccentricity": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.6150513433083603,
+        "rho_sd": 0.009100050426486112,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.6171177791385997,
+        "rho_sd": 0.07899942826006565,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.6038489270276272,
+        "rho_sd": 0.015533098572996007,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.644050701380176,
+        "rho_sd": 0.008109366423291728,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.5201149362122828,
+        "rho_sd": 0.04622036914845766,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.7523809523809525,
+        "rho_sd": 0.13213749452868195,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.7015959972862958,
+        "rho_sd": 0.04321606391059933,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.4014285714285715,
+        "rho_sd": 0.43797423277109426,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.3624242424242424,
+        "rho_sd": 0.27820756466317137,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.706381492362176,
+        "rho_sd": 0.0068916825064937095,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.5107927851005382,
+        "rho_sd": 0.042304198401524086,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.579334563674856,
+        "rho_sd": 0.029296318857597314,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.5143800256394555,
+        "rho_sd": 0.00862429430426968,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.42201560780428754,
+        "rho_sd": 0.02404135683939278,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.46583991577273814,
+        "rho_sd": 0.009157690655541284,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.6955053123902002,
+        "rho_sd": 0.018032787414323292,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.5568994757940178,
+        "rho_sd": 0.049613159890056505,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.538253332982711,
+        "rho_sd": 0.030001890141965207,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.48779274826076524,
+        "rho_sd": 0.03846654736893401,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.5463167451493516,
+        "rho_sd": 0.017933351626538165,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "curvature_variance": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.8446040051427193,
+        "rho_sd": 0.005901279863058776,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.7615449217041378,
+        "rho_sd": 0.035006878539123466,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8121739587540853,
+        "rho_sd": 0.009381418896080363,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.7429729111976515,
+        "rho_sd": 0.012161404290862845,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.5879870643374695,
+        "rho_sd": 0.02407504306614532,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.7095238095238097,
+        "rho_sd": 0.14100988209367654,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.6145070973802318,
+        "rho_sd": 0.05020517249898211,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.8157142857142858,
+        "rho_sd": 0.17651675066493305,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.6703030303030302,
+        "rho_sd": 0.09048892803728535,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8048379407682056,
+        "rho_sd": 0.006094178418219557,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.7779629570185401,
+        "rho_sd": 0.006966002118213744,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.6677531424673899,
+        "rho_sd": 0.019480609436613967,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7328891570544871,
+        "rho_sd": 0.010430930338681503,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.755827685813737,
+        "rho_sd": 0.013246983462817078,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.7131661521055644,
+        "rho_sd": 0.009630685664494381,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.7859857440534984,
+        "rho_sd": 0.009068445669818416,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8261316682084491,
+        "rho_sd": 0.02687735039892247,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.7523358301580261,
+        "rho_sd": 0.034908971699580106,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.7345792661038794,
+        "rho_sd": 0.01519477529951332,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.7332184229001353,
+        "rho_sd": 0.010039930105370439,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "glcm_contrast": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.7967935324100941,
+        "rho_sd": 0.006269634816837619,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.810357215758318,
+        "rho_sd": 0.08928153471158236,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.7482759740941411,
+        "rho_sd": 0.008632180175840685,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.8206699916799225,
+        "rho_sd": 0.003849783667268859,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.8090272849894481,
+        "rho_sd": 0.008702850332337034,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.8428571428571429,
+        "rho_sd": 0.13133062257639636,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.6087189489614864,
+        "rho_sd": 0.054919951470504554,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.652857142857143,
+        "rho_sd": 0.23225821309701922,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.5109090909090909,
+        "rho_sd": 0.4064087155526256,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.7623597793012554,
+        "rho_sd": 0.011236267612873467,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.7993254847300897,
+        "rho_sd": 0.020229809556774607,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.8045641867528637,
+        "rho_sd": 0.009890572175267103,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7819031426921754,
+        "rho_sd": 0.016367206818162287,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.8110494251731234,
+        "rho_sd": 0.008044697102365914,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.8264205023408747,
+        "rho_sd": 0.0017609596620078393,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.8153408849243808,
+        "rho_sd": 0.010842564395579431,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8868979340117175,
+        "rho_sd": 0.02044733054384851,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.7087791969056993,
+        "rho_sd": 0.005372178093910308,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.7460746735117392,
+        "rho_sd": 0.01728196427347202,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.7754154825435344,
+        "rho_sd": 0.011724154429036585,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "glcm_homogeneity": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.8675466153334049,
+        "rho_sd": 0.007735596864430251,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.8481859271571457,
+        "rho_sd": 0.0417140652907899,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8965847273969612,
+        "rho_sd": 0.004203888068773179,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.7371458570572612,
+        "rho_sd": 0.008606364093468129,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.8491352583698987,
+        "rho_sd": 0.011082400235052376,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.9261904761904762,
+        "rho_sd": 0.05609151899709401,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.8504961642834779,
+        "rho_sd": 0.0480105834757582,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.6728571428571429,
+        "rho_sd": 0.26153978898915137,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.809090909090909,
+        "rho_sd": 0.07779089486662698,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.7784655003193697,
+        "rho_sd": 0.0067047636116760595,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.8501934590120547,
+        "rho_sd": 0.016928698090927008,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.8882544492451891,
+        "rho_sd": 0.007953446047499459,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.8483465309525083,
+        "rho_sd": 0.006631257209753901,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.820153599899721,
+        "rho_sd": 0.007922830511190937,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.7845414632324544,
+        "rho_sd": 0.005055919928678937,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.8137244094836416,
+        "rho_sd": 0.022865797212524942,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.9197764415664509,
+        "rho_sd": 0.03715452657118861,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.8749650849238625,
+        "rho_sd": 0.008042669670586668,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.8733499812083154,
+        "rho_sd": 0.011929652248958759,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.8691896288066049,
+        "rho_sd": 0.005865504022046765,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "glcm_entropy": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.8208014974745502,
+        "rho_sd": 0.01015276664984318,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.7067197387221882,
+        "rho_sd": 0.10092505296942626,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8540841587814857,
+        "rho_sd": 0.0027280505206495574,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.7474021407085222,
+        "rho_sd": 0.006022311890871849,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.7094936467729204,
+        "rho_sd": 0.019597970121417806,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.7095238095238097,
+        "rho_sd": 0.17119693344997672,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.8130188654628954,
+        "rho_sd": 0.06132182322828273,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.6614285714285716,
+        "rho_sd": 0.27023232634916505,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.7606060606060605,
+        "rho_sd": 0.06173196602261625,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8718198216476983,
+        "rho_sd": 0.003766808335937797,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.7574937113032769,
+        "rho_sd": 0.016233295853404533,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.7955355572817447,
+        "rho_sd": 0.010100449475650242,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.7454133152563923,
+        "rho_sd": 0.00785590751213405,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.7288364578941848,
+        "rho_sd": 0.00898297063423017,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.6957635672060161,
+        "rho_sd": 0.005531710699225318,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.8495244713829028,
+        "rho_sd": 0.01583988859770558,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.8869118100524206,
+        "rho_sd": 0.040949141946793714,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.8250217962125772,
+        "rho_sd": 0.010859262308036126,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.7917259578061502,
+        "rho_sd": 0.004680011240834033,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.7465875436948227,
+        "rho_sd": 0.0066585351888470284,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ],
+    "integrated_optical_density": [
+      {
+        "class_label": "ART",
+        "rho_mean": 0.8886078560675642,
+        "rho_sd": 0.0018368324240665426,
+        "n_total": 15653,
+        "folds": 5
+      },
+      {
+        "class_label": "BAS",
+        "rho_mean": 0.8738911731257106,
+        "rho_sd": 0.009556538836707413,
+        "n_total": 353,
+        "folds": 5
+      },
+      {
+        "class_label": "BLA",
+        "rho_mean": 0.8694826582808366,
+        "rho_sd": 0.0067606437999793,
+        "n_total": 9578,
+        "folds": 5
+      },
+      {
+        "class_label": "EBO",
+        "rho_mean": 0.9039636170590386,
+        "rho_sd": 0.0032567518229106936,
+        "n_total": 21908,
+        "folds": 5
+      },
+      {
+        "class_label": "EOS",
+        "rho_mean": 0.8245779829930096,
+        "rho_sd": 0.013571090772059752,
+        "n_total": 4705,
+        "folds": 5
+      },
+      {
+        "class_label": "FGC",
+        "rho_mean": 0.8428571428571431,
+        "rho_sd": 0.06208764195431094,
+        "n_total": 38,
+        "folds": 5
+      },
+      {
+        "class_label": "HAC",
+        "rho_mean": 0.6892751278572175,
+        "rho_sd": 0.039109422961043444,
+        "n_total": 327,
+        "folds": 5
+      },
+      {
+        "class_label": "KSC",
+        "rho_mean": 0.1542857142857143,
+        "rho_sd": 0.4374263786452458,
+        "n_total": 34,
+        "folds": 5
+      },
+      {
+        "class_label": "LYI",
+        "rho_mean": 0.8709090909090909,
+        "rho_sd": 0.08118724177930835,
+        "n_total": 52,
+        "folds": 5
+      },
+      {
+        "class_label": "LYT",
+        "rho_mean": 0.8220023193593236,
+        "rho_sd": 0.008065822445787376,
+        "n_total": 20982,
+        "folds": 5
+      },
+      {
+        "class_label": "MMZ",
+        "rho_mean": 0.8230805129718146,
+        "rho_sd": 0.011281773784600413,
+        "n_total": 2442,
+        "folds": 5
+      },
+      {
+        "class_label": "MON",
+        "rho_mean": 0.7964975775711569,
+        "rho_sd": 0.017306031845109173,
+        "n_total": 3232,
+        "folds": 5
+      },
+      {
+        "class_label": "MYB",
+        "rho_mean": 0.8331684139269993,
+        "rho_sd": 0.014074711568699846,
+        "n_total": 5244,
+        "folds": 5
+      },
+      {
+        "class_label": "NGB",
+        "rho_mean": 0.7685794435058126,
+        "rho_sd": 0.016553280483147532,
+        "n_total": 7974,
+        "folds": 5
+      },
+      {
+        "class_label": "NGS",
+        "rho_mean": 0.7599710816249277,
+        "rho_sd": 0.00651780433206608,
+        "n_total": 23539,
+        "folds": 5
+      },
+      {
+        "class_label": "NIF",
+        "rho_mean": 0.885451544688659,
+        "rho_sd": 0.0073972206924616465,
+        "n_total": 2823,
+        "folds": 5
+      },
+      {
+        "class_label": "OTH",
+        "rho_mean": 0.922263336416898,
+        "rho_sd": 0.02741063354849755,
+        "n_total": 234,
+        "folds": 5
+      },
+      {
+        "class_label": "PEB",
+        "rho_mean": 0.8454692837281346,
+        "rho_sd": 0.018248218082583395,
+        "n_total": 2192,
+        "folds": 5
+      },
+      {
+        "class_label": "PLM",
+        "rho_mean": 0.871686350969043,
+        "rho_sd": 0.00981296011165814,
+        "n_total": 6103,
+        "folds": 5
+      },
+      {
+        "class_label": "PMO",
+        "rho_mean": 0.8355557549470987,
+        "rho_sd": 0.004596022683938738,
+        "n_total": 9595,
+        "folds": 5
+      }
+    ]
+  },
+  "checks": {
+    "max_rel_val_mse_vs_linear_cv": 3.554645614349991e-15,
+    "max_abs_r2_within_of_type_only": 1.1102230246251565e-16,
+    "max_abs_rebuilt_seed_mean_label": 1.4551915228366852e-11
+  },
+  "aggregation": "mean and sd (ddof=1) over the 5 folds",
+  "versions": {
+    "python": "3.11.15",
+    "numpy": "2.4.4",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1"
+  },
+  "host": "ks-149-u24-Precision-7920-Tower"
+}

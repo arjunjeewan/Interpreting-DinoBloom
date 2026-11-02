@@ -1,0 +1,414 @@
+{
+  "matek_bm": {
+    "n": 171374,
+    "fold_counts": {
+      "train": 119962,
+      "test": 25708,
+      "val": 25704
+    },
+    "fold_fractions": {
+      "train": 0.7,
+      "test": 0.15,
+      "val": 0.15
+    },
+    "class_by_fold": {
+      "ABE": {
+        "test": 1,
+        "train": 6,
+        "val": 1
+      },
+      "ART": {
+        "test": 2945,
+        "train": 13741,
+        "val": 2944
+      },
+      "BAS": {
+        "test": 66,
+        "train": 309,
+        "val": 66
+      },
+      "BLA": {
+        "test": 1796,
+        "train": 8381,
+        "val": 1796
+      },
+      "EBO": {
+        "test": 4110,
+        "train": 19176,
+        "val": 4109
+      },
+      "EOS": {
+        "test": 883,
+        "train": 4118,
+        "val": 882
+      },
+      "FGC": {
+        "test": 7,
+        "train": 33,
+        "val": 7
+      },
+      "HAC": {
+        "test": 62,
+        "train": 286,
+        "val": 61
+      },
+      "KSC": {
+        "test": 7,
+        "train": 29,
+        "val": 6
+      },
+      "LYI": {
+        "test": 9,
+        "train": 46,
+        "val": 10
+      },
+      "LYT": {
+        "test": 3937,
+        "train": 18369,
+        "val": 3936
+      },
+      "MMZ": {
+        "test": 459,
+        "train": 2138,
+        "val": 458
+      },
+      "MON": {
+        "test": 606,
+        "train": 2828,
+        "val": 606
+      },
+      "MYB": {
+        "test": 983,
+        "train": 4590,
+        "val": 984
+      },
+      "NGB": {
+        "test": 1495,
+        "train": 6978,
+        "val": 1495
+      },
+      "NGS": {
+        "test": 4413,
+        "train": 20597,
+        "val": 4414
+      },
+      "NIF": {
+        "test": 530,
+        "train": 2477,
+        "val": 531
+      },
+      "OTH": {
+        "test": 44,
+        "train": 206,
+        "val": 44
+      },
+      "PEB": {
+        "test": 411,
+        "train": 1918,
+        "val": 411
+      },
+      "PLM": {
+        "test": 1145,
+        "train": 5340,
+        "val": 1144
+      },
+      "PMO": {
+        "test": 1799,
+        "train": 8396,
+        "val": 1799
+      }
+    }
+  },
+  "pbc": {
+    "n": 17092,
+    "fold_counts": {
+      "train": 11965,
+      "val": 2564,
+      "test": 2563
+    },
+    "fold_fractions": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "class_by_fold": {
+      "basophil": {
+        "test": 182,
+        "train": 853,
+        "val": 183
+      },
+      "eosinophil": {
+        "test": 467,
+        "train": 2182,
+        "val": 468
+      },
+      "erythroblast": {
+        "test": 232,
+        "train": 1086,
+        "val": 233
+      },
+      "ig": {
+        "test": 435,
+        "train": 2026,
+        "val": 434
+      },
+      "lymphocyte": {
+        "test": 182,
+        "train": 850,
+        "val": 182
+      },
+      "monocyte": {
+        "test": 213,
+        "train": 994,
+        "val": 213
+      },
+      "neutrophil": {
+        "test": 500,
+        "train": 2330,
+        "val": 499
+      },
+      "platelet": {
+        "test": 352,
+        "train": 1644,
+        "val": 352
+      }
+    }
+  },
+  "hicervix": {
+    "n": 40229,
+    "fold_counts": {
+      "train": 28163,
+      "val": 6037,
+      "test": 6029
+    },
+    "fold_fractions": {
+      "train": 0.7001,
+      "val": 0.1501,
+      "test": 0.1499
+    },
+    "class_by_fold": {
+      "ACTINO": {
+        "test": 302,
+        "train": 1413,
+        "val": 303
+      },
+      "ADC": {
+        "test": 196,
+        "train": 918,
+        "val": 197
+      },
+      "ADC-ECC": {
+        "test": 36,
+        "train": 171,
+        "val": 37
+      },
+      "ADC-EMC": {
+        "test": 16,
+        "train": 76,
+        "val": 16
+      },
+      "AGC": {
+        "test": 314,
+        "train": 1462,
+        "val": 313
+      },
+      "AGC-ECC-NOS": {
+        "test": 159,
+        "train": 746,
+        "val": 160
+      },
+      "AGC-EMC-NOS": {
+        "test": 38,
+        "train": 177,
+        "val": 38
+      },
+      "AGC-FN": {
+        "test": 167,
+        "train": 780,
+        "val": 167
+      },
+      "AGC-NOS": {
+        "test": 330,
+        "train": 1544,
+        "val": 331
+      },
+      "ASC-H": {
+        "test": 215,
+        "train": 1006,
+        "val": 216
+      },
+      "ASC-US": {
+        "test": 390,
+        "train": 1819,
+        "val": 390
+      },
+      "Atrophy": {
+        "test": 222,
+        "train": 1039,
+        "val": 223
+      },
+      "CC": {
+        "test": 165,
+        "train": 769,
+        "val": 165
+      },
+      "ECC": {
+        "test": 341,
+        "train": 1590,
+        "val": 341
+      },
+      "EMC": {
+        "test": 230,
+        "train": 1070,
+        "val": 229
+      },
+      "FUNGI": {
+        "test": 307,
+        "train": 1433,
+        "val": 307
+      },
+      "HCG": {
+        "test": 133,
+        "train": 621,
+        "val": 133
+      },
+      "HSIL": {
+        "test": 298,
+        "train": 1392,
+        "val": 298
+      },
+      "HSV": {
+        "test": 187,
+        "train": 874,
+        "val": 187
+      },
+      "LSIL": {
+        "test": 261,
+        "train": 1221,
+        "val": 262
+      },
+      "MPC": {
+        "test": 238,
+        "train": 1114,
+        "val": 239
+      },
+      "Normal": {
+        "test": 518,
+        "train": 2418,
+        "val": 518
+      },
+      "PG": {
+        "test": 235,
+        "train": 1094,
+        "val": 234
+      },
+      "RPC": {
+        "test": 316,
+        "train": 1478,
+        "val": 317
+      },
+      "SCC": {
+        "test": 161,
+        "train": 750,
+        "val": 161
+      },
+      "TRI": {
+        "test": 254,
+        "train": 1188,
+        "val": 255
+      }
+    }
+  },
+  "raabin": {
+    "n": 16633,
+    "fold_counts": {
+      "train": 7123,
+      "testA": 4339,
+      "testB": 2119,
+      "val": 1527,
+      "test": 1525
+    },
+    "fold_fractions": {
+      "train": 0.4282,
+      "testA": 0.2609,
+      "testB": 0.1274,
+      "val": 0.0918,
+      "test": 0.0917
+    },
+    "class_by_fold": {
+      "basophil": {
+        "test": 32,
+        "testA": 89,
+        "testB": 0,
+        "train": 148,
+        "val": 32
+      },
+      "eosinophil": {
+        "test": 111,
+        "testA": 322,
+        "testB": 0,
+        "train": 521,
+        "val": 112
+      },
+      "lymphocyte": {
+        "test": 364,
+        "testA": 1034,
+        "testB": 148,
+        "train": 1699,
+        "val": 364
+      },
+      "monocyte": {
+        "test": 84,
+        "testA": 234,
+        "testB": 0,
+        "train": 393,
+        "val": 84
+      },
+      "neutrophil": {
+        "test": 934,
+        "testA": 2660,
+        "testB": 1971,
+        "train": 4362,
+        "val": 935
+      }
+    }
+  },
+  "raabin_gt_segmentation": {
+    "n": 927,
+    "fold_counts": {
+      "train": 645,
+      "val": 141,
+      "test": 141
+    },
+    "fold_fractions": {
+      "train": 0.6958,
+      "val": 0.1521,
+      "test": 0.1521
+    },
+    "class_by_fold": {
+      "eosinophil": {
+        "test": 19,
+        "train": 163,
+        "val": 19
+      },
+      "lymphocyte": {
+        "test": 46,
+        "train": 159,
+        "val": 37
+      },
+      "monocyte": {
+        "test": 44,
+        "train": 158,
+        "val": 40
+      },
+      "neutrophil": {
+        "test": 32,
+        "train": 165,
+        "val": 45
+      }
+    },
+    "n_groups": 54,
+    "groups_spanning_folds": 0,
+    "authors_division_leaks_films": 15
+  }
+}
