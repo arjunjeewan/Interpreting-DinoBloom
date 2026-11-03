@@ -98,9 +98,11 @@ python -m src.analysis.linear_unseen_attnpath --read-test
 # Region leads under a bootstrap over cells (Sec. 3.3; post hoc, from the stored per-cell terms)
 python -m src.analysis.linear_region_lead
 
-# Baseline encoders on Matek's validation folds (Sec. 3.1; post hoc)
+# Baseline encoders (Sec. 3.1; post hoc): Matek's validation folds, then PBC's validation split
 python -m src.embed --encoder dinov2_b dinov2_l --dataset matek_bm
 python -m src.analysis.linear_baseline
+python -m src.embed --encoder dinov2_b --dataset pbc
+python -m src.analysis.linear_unseen --dataset pbc --encoder dinov2_b
 
 # Table 1 and figures
 python -m src.analysis.linear_cv_table
@@ -158,7 +160,7 @@ All files are in `results/`.
 | Sec. 2, label reliability; Table 1, Matek | `linear_cv_dinobloom_matek_bm.json`, `linear_cv_within_dinobloom_matek_bm.json` |
 | Table 1, PBC and Raabin; label reliability | `linear_unseen_dinobloom_pbc.json`, `linear_unseen_dinobloom_raabin.json` |
 | Sec. 3.1, cell type alone, within cell type, validation against test | `linear_cv_within_dinobloom_matek_bm.json`, `linear_unseen_dinobloom_pbc.json` and `.parquet` |
-| Sec. 3.1, baseline encoder | `linear_baseline_matek_bm.json` and `.parquet` |
+| Sec. 3.1, baseline encoder; Sec. 4, its share of DinoBloom's R² | `linear_baseline_matek_bm.json` and `.parquet`; `linear_unseen_dinov2_b_pbc.json` and `linear_unseen_dinobloom_pbc.json` (validation) |
 | Sec. 3.2, subsets of embedding positions | `linear_cv_ablation_dinobloom_matek_bm.json`, `linear_unseen_ablation_dinobloom_pbc_test.json` |
 | Sec. 3.2, free direction | `linear_cv_weights_dinobloom_matek_bm.json` |
 | Sec. 3.2, positions on Raabin | `linear_cv_raabin_dinobloom.json` |
@@ -299,6 +301,25 @@ DinoBloom-B's in 55 of 55 (descriptor, fold) pairs.
 | GLCM contrast | 0.656 | 0.561 | 0.547 | 0.430 | 0.540 | 0.423 |
 | GLCM homogeneity | 0.746 | 0.681 | 0.596 | 0.501 | 0.601 | 0.509 |
 | GLCM entropy | 0.741 | 0.670 | 0.583 | 0.480 | 0.589 | 0.490 |
+
+On PBC, which neither encoder saw in pretraining, DINOv2-B runs through
+`src/analysis/linear_unseen.py` without `--read-test`: five fits, each on four fifths of the
+training split, scored on the validation split only. DinoBloom-B's validation scores come from the
+same script. Ratio: DINOv2-B's score as a share of DinoBloom-B's.
+
+| Linear regression | DinoBloom-B R² | DINOv2-B R² | ratio | DinoBloom-B within | DINOv2-B within | ratio |
+|---|---:|---:|---:|---:|---:|---:|
+| nuclear area | 0.915 | 0.854 | 93% | 0.793 | 0.647 | 82% |
+| integrated optical density | 0.880 | 0.810 | 92% | 0.737 | 0.587 | 80% |
+| cytoplasmic area | 0.934 | 0.879 | 94% | 0.845 | 0.718 | 85% |
+| N:C ratio | 0.945 | 0.873 | 92% | 0.799 | 0.544 | 68% |
+| nuclear solidity | 0.850 | 0.748 | 88% | 0.623 | 0.369 | 59% |
+| form factor | 0.848 | 0.772 | 91% | 0.681 | 0.525 | 77% |
+| eccentricity | 0.678 | 0.642 | 95% | 0.465 | 0.408 | 88% |
+| curvature variance | 0.835 | 0.778 | 93% | 0.660 | 0.546 | 83% |
+| GLCM contrast | 0.748 | 0.717 | 96% | 0.638 | 0.594 | 93% |
+| GLCM homogeneity | 0.889 | 0.842 | 95% | 0.762 | 0.664 | 87% |
+| GLCM entropy | 0.891 | 0.840 | 94% | 0.748 | 0.633 | 85% |
 
 ## License
 

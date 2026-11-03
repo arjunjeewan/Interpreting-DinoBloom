@@ -19,6 +19,9 @@ Encoders: dinov2_b (DinoBloom-B's architecture, ViT-B/14, 768-d, pretrained on n
 is the baseline; dinov2_l (ViT-L/14, 1024-d) is reported beside it. dinobloom runs through the
 same code as a check: its per-fold pooled R^2 must equal linear_cv.py's stored results.
 
+On PBC, which neither encoder saw in pretraining, the baseline runs through linear_unseen.py
+instead (--encoder dinov2_b, without --read-test: five fits, scored on the validation split only).
+
 No network access.
 """
 
