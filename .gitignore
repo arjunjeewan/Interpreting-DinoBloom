@@ -19,5 +19,9 @@ results/*.parquet
 
 # Figure previews and the overview's intermediate SVG
 figures/*.png
+!figures/overview.png
+!figures/linear_summary_dinobloom.png
+!figures/linear_unseen_maps_all_dinobloom.png
+!figures/linear_cv_attnpath_dinobloom.png
 figures/overview/overview.svg
 
