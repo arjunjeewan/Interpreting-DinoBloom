@@ -18,6 +18,8 @@ results/*.parquet
 !results/linear_unseen_maps_dinobloom_pbc.parquet
 !results/linear_baseline_matek_bm.parquet
 !results/linear_unseen_dinov2_b_pbc*.parquet
+!results/linear_cv_ablation_dinobloom_matek_bm.parquet
+!results/linear_unseen_ablation_dinobloom_pbc_*.parquet
 
 # Figure previews and the overview's intermediate SVG
 figures/*.png

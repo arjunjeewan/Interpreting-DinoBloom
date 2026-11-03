@@ -161,7 +161,7 @@ All files are in `results/`.
 | Table 1, PBC and Raabin; label reliability | `linear_unseen_dinobloom_pbc.json`, `linear_unseen_dinobloom_raabin.json` |
 | Sec. 3.1, cell type alone, within cell type, validation against test | `linear_cv_within_dinobloom_matek_bm.json`, `linear_unseen_dinobloom_pbc.json` and `.parquet` |
 | Sec. 3.1, baseline encoder; Sec. 4, its share of DinoBloom's R² | `linear_baseline_matek_bm.json` and `.parquet`; `linear_unseen_dinov2_b_pbc.json` and `linear_unseen_dinobloom_pbc.json` (validation) |
-| Sec. 3.2, subsets of embedding positions | `linear_cv_ablation_dinobloom_matek_bm.json`, `linear_unseen_ablation_dinobloom_pbc_test.json` |
+| Sec. 3.2, subsets of embedding positions | `linear_cv_ablation_dinobloom_matek_bm.json` and `.parquet`, `linear_unseen_ablation_dinobloom_pbc_test.json` and `.parquet` (R² per descriptor, subset, K and fold) |
 | Sec. 3.2, free direction | `linear_cv_weights_dinobloom_matek_bm.json` |
 | Sec. 3.2, positions on Raabin | `linear_cv_raabin_dinobloom.json` |
 | Sec. 3.3, saliency maps | `linear_cv_attribution_dinobloom_matek_bm.json` and `.parquet` |
