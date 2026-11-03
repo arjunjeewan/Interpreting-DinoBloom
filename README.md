@@ -48,6 +48,7 @@ figure is rendered with Inkscape.
 | PBC | Mendeley Data, [doi:10.17632/snkd93bnjr.1](https://doi.org/10.17632/snkd93bnjr.1) | CC BY 4.0 |
 | Raabin-WBC | [raabindata.com](https://raabindata.com) | "freely available for all" (dataset paper); no license stated |
 | DinoBloom-B weights | [`1aurent/vit_base_patch14_224.dinobloom`](https://huggingface.co/1aurent/vit_base_patch14_224.dinobloom), a timm port of the [official release](https://zenodo.org/records/10908163) | Apache 2.0 |
+| DINOv2-B and DINOv2-L weights (baselines) | [`facebook/dinov2-base`](https://huggingface.co/facebook/dinov2-base), [`facebook/dinov2-large`](https://huggingface.co/facebook/dinov2-large) | Apache 2.0 |
 
 ```bash
 python -m src.acquire.matek_bm
@@ -55,6 +56,8 @@ python -m src.acquire.raabin
 python -m src.acquire.pbc
 python -m src.acquire.pretraining_status        # -> data/pretraining_status.csv
 hf download 1aurent/vit_base_patch14_224.dinobloom --local-dir data/weights/timm_vit_base_patch14_224.dinobloom
+hf download facebook/dinov2-base --local-dir data/weights/dinov2_base
+hf download facebook/dinov2-large --local-dir data/weights/dinov2_large
 ```
 
 Everything after this step runs offline.
@@ -95,6 +98,10 @@ python -m src.analysis.linear_unseen_attnpath --read-test
 # Region leads under a bootstrap over cells (Sec. 3.3; post hoc, from the stored per-cell terms)
 python -m src.analysis.linear_region_lead
 
+# Baseline encoders on Matek's validation folds (Sec. 3.1; post hoc)
+python -m src.embed --encoder dinov2_b dinov2_l --dataset matek_bm
+python -m src.analysis.linear_baseline
+
 # Table 1 and figures
 python -m src.analysis.linear_cv_table
 python -m src.figures --only maps_all          # Fig. 2
@@ -107,7 +114,7 @@ inkscape figures/overview/overview.svg --export-type=pdf --export-filename=figur
 Comments and result files mention `protocol.md`, the written analysis plan of the working
 repository; its section 16 fixed the PBC and Raabin benchmark before any test cell was read. It
 is not part of this repository. The bootstrap of the region leads was added after the test split
-was read and is labeled post hoc in the paper.
+was read, and the baseline encoders after that; both are labeled post hoc in the paper.
 
 ## Table 1 and Fig. 2
 
@@ -151,6 +158,7 @@ All files are in `results/`.
 | Sec. 2, label reliability; Table 1, Matek | `linear_cv_dinobloom_matek_bm.json`, `linear_cv_within_dinobloom_matek_bm.json` |
 | Table 1, PBC and Raabin; label reliability | `linear_unseen_dinobloom_pbc.json`, `linear_unseen_dinobloom_raabin.json` |
 | Sec. 3.1, cell type alone, within cell type, validation against test | `linear_cv_within_dinobloom_matek_bm.json`, `linear_unseen_dinobloom_pbc.json` and `.parquet` |
+| Sec. 3.1, baseline encoder | `linear_baseline_matek_bm.json` and `.parquet` |
 | Sec. 3.2, subsets of embedding positions | `linear_cv_ablation_dinobloom_matek_bm.json`, `linear_unseen_ablation_dinobloom_pbc_test.json` |
 | Sec. 3.2, free direction | `linear_cv_weights_dinobloom_matek_bm.json` |
 | Sec. 3.2, positions on Raabin | `linear_cv_raabin_dinobloom.json` |
@@ -267,6 +275,30 @@ the same patient and film, so the intervals are a lower bound on the uncertainty
   only, with boundary patches as one column.
 - **Dot:** the largest region in each row.
 - **Not shown:** the CLS token's write to itself and the constant terms.
+
+### 5. Baseline encoders (Sec. 3.1, post hoc)
+
+The same linear models on the CLS embedding of DINOv2-B (ViT-B/14, 768-d: DinoBloom-B's
+architecture, pretrained on natural images) and DINOv2-L (ViT-L/14, 1,024-d), with the same
+preprocessing, on Matek's five validation folds; the hold-out is not read
+(`src/analysis/linear_baseline.py`, `results/linear_baseline_matek_bm.json`). DinoBloom-B runs
+through the same code and reproduces Table 1's Matek columns (largest difference in R²,
+9e-16). Means over the five folds (largest sd 0.010). DINOv2-B's R² is below
+DinoBloom-B's in 55 of 55 (descriptor, fold) pairs.
+
+| Linear regression | DinoBloom-B R² | within | DINOv2-B R² | within | DINOv2-L R² | within |
+|---|---:|---:|---:|---:|---:|---:|
+| nuclear area | 0.857 | 0.795 | 0.797 | 0.717 | 0.791 | 0.709 |
+| integrated optical density | 0.806 | 0.742 | 0.706 | 0.618 | 0.699 | 0.610 |
+| cytoplasmic area | 0.676 | 0.646 | 0.663 | 0.633 | 0.693 | 0.665 |
+| N:C ratio | 0.727 | 0.658 | 0.664 | 0.586 | 0.677 | 0.603 |
+| nuclear solidity | 0.722 | 0.672 | 0.632 | 0.572 | 0.630 | 0.570 |
+| form factor | 0.781 | 0.731 | 0.679 | 0.612 | 0.685 | 0.618 |
+| eccentricity | 0.448 | 0.394 | 0.353 | 0.294 | 0.352 | 0.293 |
+| curvature variance | 0.657 | 0.587 | 0.547 | 0.461 | 0.545 | 0.460 |
+| GLCM contrast | 0.656 | 0.561 | 0.547 | 0.430 | 0.540 | 0.423 |
+| GLCM homogeneity | 0.746 | 0.681 | 0.596 | 0.501 | 0.601 | 0.509 |
+| GLCM entropy | 0.741 | 0.670 | 0.583 | 0.480 | 0.589 | 0.490 |
 
 ## License
 

@@ -171,6 +171,13 @@ ENCODERS: dict[str, Encoder] = {
         # last_hidden_state is post-layernorm in transformers' Dinov2Model.
         forward=lambda m, x: m(x, interpolate_pos_encoding=True).last_hidden_state[:, 0],
     ),
+    # [APPROVED 2026-11-03] post hoc baseline with DinoBloom-B's architecture (ViT-B/14, 768-d).
+    "dinov2_b": Encoder(
+        local_dir="dinov2_base", dim=768,
+        interpolation="bicubic", pooling="cls",
+        build=_build_dinov2,
+        forward=lambda m, x: m(x, interpolate_pos_encoding=True).last_hidden_state[:, 0],
+    ),
 }
 
 
