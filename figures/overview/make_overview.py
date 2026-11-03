@@ -21,23 +21,23 @@ BASE = (21.4, 30.8, 40.2)                 # body baselines (pt)
 CARDS = [
     ("DinoBloom-B", "#e8e6e1", "#f6f5f2", "#8a877f", 58, 60,
      [[("ViT-B/14", "")], [("CLS token ", ""), ("z", "b")], [("768-d", "")]]),
-    ("3.1 Readouts", "#bbd4f2", "#eaf2fb", "#2466b6", 130, 85,
+    ("3.1 Linear models", "#bbd4f2", "#eaf2fb", "#2466b6", 130, 80,
      [[("ŷ", "i"), (" = ", ""), ("w", "b"), ("⊤", "sup"), ("z", "b"), (" + ", ""), ("b", "i")],
       ([("R", "i"), ("² 0.45–0.86", "")], [("Matek", "")]),
       ([("R", "i"), ("² 0.70–0.95", "")], [("PBC", "")])]),
-    ("3.2 Coordinates", "#f9cfbe", "#fdf0eb", "#c8582c", 227, 85,
-     [[("top-", ""), ("K", "i"), (" refits", "")], [("best coordinate", "")],
+    ("3.2 Embedding positions", "#f9cfbe", "#fdf0eb", "#c8582c", 222, 96,
+     [[("top-", ""), ("K", "i"), (" refits", "")], [("best position", "")],
       [("at most 37% of ", ""), ("R", "i"), ("²", "")]]),
-    ("3.3 Decomposition", "#b6e5d4", "#e8f7f2", "#179568", 324, 85,
+    ("3.3 Decomposition", "#b6e5d4", "#e8f7f2", "#179568", 330, 79,
      [[("ŷ", "i"), (" = Σ writes + MLP", "")], [("patch writes", "")],
       [("66–98% of Var(", ""), ("ŷ", "i"), (")", "")]]),
-    ("3.4 Set-up transfer", "#f9e1ad", "#fdf6e6", "#c98900", 421, 85,
+    ("3.4 Setup transfer", "#f9e1ad", "#fdf6e6", "#c98900", 421, 85,
      [[("fit on Raabin train", "")],
       ([("ρ", "i"), (" 0.67–0.94", "")], [("validation", "")]),
       ([("ρ", "i"), (" 0.19–0.63", "")], [("set B", "")])]),
 ]
 IMAGE = (0, 46)                           # the input crop: x, side (pt)
-ARROWS = [(46, 58), (118, 130), (215, 227), (312, 324), (409, 421)]   # from right edge to left edge
+ARROWS = [(46, 58), (118, 130), (210, 222), (318, 330), (409, 421)]   # from right edge to left edge
 RADIUS = 2.5
 
 

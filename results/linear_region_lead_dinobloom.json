@@ -1,0 +1,357 @@
+{
+ "analysis": "measured-region lead under a bootstrap over cells (post hoc)",
+ "resamples": 10000,
+ "seed": 0,
+ "regions": [
+  "nucleus",
+  "cytoplasm",
+  "rest"
+ ],
+ "measured_in": {
+  "nuclear_area": "nucleus",
+  "cytoplasmic_area": "cytoplasm",
+  "nc_ratio": "both",
+  "nuclear_solidity": "nucleus",
+  "form_factor": "nucleus",
+  "eccentricity": "nucleus",
+  "curvature_variance": "nucleus",
+  "glcm_contrast": "nucleus",
+  "glcm_homogeneity": "nucleus",
+  "glcm_entropy": "nucleus",
+  "integrated_optical_density": "nucleus"
+ },
+ "matek_cv": {
+  "nuclear_area": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.347641720754861,
+    "cytoplasm": 0.12411422059932688,
+    "rest": 0.2904097240115526
+   },
+   "leads": true,
+   "margin": 0.05723199674330842,
+   "margin_ci95": [
+    0.031743801041531156,
+    0.08182200923863524
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "cytoplasmic_area": {
+   "measured_in": "cytoplasm",
+   "shares": {
+    "nucleus": 0.17022147093320075,
+    "cytoplasm": 0.3470692214249798,
+    "rest": 0.2760921715440577
+   },
+   "leads": true,
+   "margin": 0.07097704988092213,
+   "margin_ci95": [
+    0.04426441627567626,
+    0.09780810594253009
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "nc_ratio": {
+   "measured_in": "both",
+   "shares": {
+    "nucleus": 0.3060286290779488,
+    "cytoplasm": 0.40814933074411996,
+    "rest": 0.24956447505968998
+   },
+   "leads": true,
+   "margin": 0.05646415401825883,
+   "margin_ci95": [
+    0.030307273546091223,
+    0.08309027130788259
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "nuclear_solidity": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.37380997608282535,
+    "cytoplasm": 0.3030284669170172,
+    "rest": 0.28255672898507284
+   },
+   "leads": true,
+   "margin": 0.07078150916580817,
+   "margin_ci95": [
+    0.05186945402269319,
+    0.08968582149864182
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "form_factor": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.3833857607807747,
+    "cytoplasm": 0.17975229533180204,
+    "rest": 0.2667854473671119
+   },
+   "leads": true,
+   "margin": 0.11660031341366278,
+   "margin_ci95": [
+    0.09677016633595888,
+    0.13662211243684055
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "eccentricity": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.4091419122112902,
+    "cytoplasm": 0.16518785597739494,
+    "rest": 0.08098713285537075
+   },
+   "leads": true,
+   "margin": 0.24395405623389527,
+   "margin_ci95": [
+    0.225522448468354,
+    0.2620936308888458
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "curvature_variance": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.3881195166360491,
+    "cytoplasm": 0.23923661040270983,
+    "rest": 0.16640974064364297
+   },
+   "leads": true,
+   "margin": 0.14888290623333927,
+   "margin_ci95": [
+    0.1276637729967455,
+    0.16916934874686285
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "glcm_contrast": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.45556313360361816,
+    "cytoplasm": 0.20432813777228703,
+    "rest": 0.1630569182367299
+   },
+   "leads": true,
+   "margin": 0.25123499583133113,
+   "margin_ci95": [
+    0.23050717794510192,
+    0.27250194079085754
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "glcm_homogeneity": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5799632297007277,
+    "cytoplasm": 0.14991475391324327,
+    "rest": 0.07865094839662554
+   },
+   "leads": true,
+   "margin": 0.4300484757874844,
+   "margin_ci95": [
+    0.40904872874955645,
+    0.45072649695383854
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "glcm_entropy": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.4484207418379369,
+    "cytoplasm": 0.10332240151511447,
+    "rest": 0.19080122669110658
+   },
+   "leads": true,
+   "margin": 0.25761951514683035,
+   "margin_ci95": [
+    0.2264364090540712,
+    0.28852136433155423
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "integrated_optical_density": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.3717283435526843,
+    "cytoplasm": 0.14877756797851363,
+    "rest": 0.2602580061468344
+   },
+   "leads": true,
+   "margin": 0.11147033740584988,
+   "margin_ci95": [
+    0.08102060693830063,
+    0.14104844499603278
+   ],
+   "fraction_of_resamples_leading": 1.0
+  }
+ },
+ "pbc_test": {
+  "nuclear_area": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5256670191718911,
+    "cytoplasm": 0.23805147570429447,
+    "rest": 0.21999504212267182
+   },
+   "leads": true,
+   "margin": 0.2876155434675966,
+   "margin_ci95": [
+    0.2685812212526164,
+    0.30455564718412953
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "cytoplasmic_area": {
+   "measured_in": "cytoplasm",
+   "shares": {
+    "nucleus": 0.3724048506706068,
+    "cytoplasm": 0.23943960117131952,
+    "rest": 0.2709304951325316
+   },
+   "leads": false,
+   "margin": -0.13296524949928729,
+   "margin_ci95": [
+    -0.15352359289439557,
+    -0.11226201602455282
+   ],
+   "fraction_of_resamples_leading": 0.0
+  },
+  "nc_ratio": {
+   "measured_in": "both",
+   "shares": {
+    "nucleus": 0.4843505068852367,
+    "cytoplasm": 0.20547697519017719,
+    "rest": 0.18302590199731592
+   },
+   "leads": true,
+   "margin": 0.02245107319286127,
+   "margin_ci95": [
+    0.009220382803774149,
+    0.03599288806549168
+   ],
+   "fraction_of_resamples_leading": 0.9995
+  },
+  "nuclear_solidity": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.2679065853653762,
+    "cytoplasm": 0.39098427558785465,
+    "rest": 0.12521558778002553
+   },
+   "leads": false,
+   "margin": -0.12307769022247844,
+   "margin_ci95": [
+    -0.13683520105312577,
+    -0.10936657809786884
+   ],
+   "fraction_of_resamples_leading": 0.0
+  },
+  "form_factor": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5009609350037494,
+    "cytoplasm": 0.20987668839387497,
+    "rest": 0.07786623598797357
+   },
+   "leads": true,
+   "margin": 0.2910842466098744,
+   "margin_ci95": [
+    0.26952654586770763,
+    0.31110950969130224
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "eccentricity": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5396032024886891,
+    "cytoplasm": 0.12091752087255545,
+    "rest": 0.016469356576714653
+   },
+   "leads": true,
+   "margin": 0.4186856816161336,
+   "margin_ci95": [
+    0.4056169378325154,
+    0.4319932559327525
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "curvature_variance": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5290001258902594,
+    "cytoplasm": 0.20613744198836886,
+    "rest": 0.04091351881302052
+   },
+   "leads": true,
+   "margin": 0.3228626839018905,
+   "margin_ci95": [
+    0.30191797761277483,
+    0.3435962695200922
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "glcm_contrast": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.4363677387956623,
+    "cytoplasm": 0.32312086423545616,
+    "rest": 0.0033433762579153483
+   },
+   "leads": true,
+   "margin": 0.11324687456020616,
+   "margin_ci95": [
+    0.09063132808133391,
+    0.13523829136295296
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "glcm_homogeneity": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5718835743046673,
+    "cytoplasm": 0.26415494016164526,
+    "rest": 0.03256325558102014
+   },
+   "leads": true,
+   "margin": 0.30772863414302204,
+   "margin_ci95": [
+    0.28456037101433895,
+    0.32975825033982353
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "glcm_entropy": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.5237861878005031,
+    "cytoplasm": 0.2647387655118033,
+    "rest": 0.0875086296533446
+   },
+   "leads": true,
+   "margin": 0.2590474222886998,
+   "margin_ci95": [
+    0.23763700007540578,
+    0.27993273159402643
+   ],
+   "fraction_of_resamples_leading": 1.0
+  },
+  "integrated_optical_density": {
+   "measured_in": "nucleus",
+   "shares": {
+    "nucleus": 0.48215808297661045,
+    "cytoplasm": 0.2386857422919057,
+    "rest": 0.2536866849791795
+   },
+   "leads": true,
+   "margin": 0.22847139799743094,
+   "margin_ci95": [
+    0.19182102740940057,
+    0.2575541834291337
+   ],
+   "fraction_of_resamples_leading": 1.0
+  }
+ }
+}

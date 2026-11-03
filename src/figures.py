@@ -557,16 +557,125 @@ def linear_cv_attnpath(encoder: str = "dinobloom") -> None:
         print(f"wrote {out.relative_to(ROOT)}")
 
 
+SUMMARY_LABEL = {"nuclear_area": "nuclear\narea", "integrated_optical_density": "integrated\noptical density",
+                 "cytoplasmic_area": "cytoplasmic\narea", "nc_ratio": "N:C\nratio",
+                 "nuclear_solidity": "nuclear\nsolidity", "form_factor": "form\nfactor",
+                 "eccentricity": "eccentricity", "curvature_variance": "curvature\nvariance",
+                 "glcm_contrast": "GLCM\ncontrast", "glcm_homogeneity": "GLCM\nhomogeneity",
+                 "glcm_entropy": "GLCM\nentropy"}
+
+
+# One-line names for the 11-readout maps (Fig. 3); the paper defines IOD, and its Methods name contrast,
+# homogeneity and entropy as GLCM features.
+MAP_SHORT_LABEL = {"nuclear_area": "nuclear area", "integrated_optical_density": "IOD",
+                   "cytoplasmic_area": "cytoplasmic area", "nc_ratio": "N:C ratio",
+                   "nuclear_solidity": "solidity", "form_factor": "form factor",
+                   "eccentricity": "eccentricity", "curvature_variance": "curvature var.",
+                   "glcm_contrast": "contrast", "glcm_homogeneity": "homogeneity", "glcm_entropy": "entropy"}
+
+
+def _shade(color: str, f: float) -> tuple:
+    """color mixed with the surface: f = 1 is the color itself, f = 0 the surface."""
+    c, s = np.array(matplotlib.colors.to_rgb(color)), np.array(matplotlib.colors.to_rgb(SURFACE))
+    return tuple(f * c + (1 - f) * s)
+
+
+def linear_summary(encoder: str = "dinobloom") -> None:
+    """The paper's per-descriptor summary of the linear models, full text width (replaces Table 1).
+
+    Columns: the 11 descriptors in HEATMAP_ROWS order, a quarter column between families.
+    Top, per descriptor: Matek (slot 1, left) and PBC (slot 2, middle), filled circle the
+    validation (Matek) or test (PBC) R^2, open circle R^2 within cell type, dash cell type
+    alone (tables/linear_cv_table1, means over the five folds or fits); Raabin (ink, right),
+    Spearman rho on validation (filled down-triangle) and set B (open), joined
+    (linear_unseen, means over the five fits). Bottom, per descriptor: the variance shares of
+    the patch writes in nucleus, cytoplasm and rest (dark to light) for Matek (left, slot 1)
+    and the PBC test split (right, slot 2), over all cells, with a dot over each measured
+    region (linear_cv_attnpath, linear_unseen_attnpath). No text beyond ticks and axis labels;
+    the explanation belongs in the caption.
+    """
+    from src.analysis.linear_cv_attnpath import MEASURED_IN
+    order = [d for family in HEATMAP_ROWS for d in family]
+    x, n = [], 0
+    for f, family in enumerate(HEATMAP_ROWS):
+        x += [n + 0.25 * f + i for i in range(len(family))]
+        n += len(family)
+    x = np.array(x)
+    table = pd.read_csv(ROOT / "tables" / f"linear_cv_table1_{encoder}.csv")
+    table = table[table.statistic == "r2"].set_index("row").loc[[DESCRIPTOR_LABEL[d] for d in order]]
+    raabin = pd.read_parquet(RESULTS / f"linear_unseen_{encoder}_raabin.parquet")
+    rho = {s: raabin[raabin.split == s].groupby("descriptor").rho_pooled.mean().loc[order].to_numpy()
+           for s in ("val", "testB")}
+    matek = json.loads((RESULTS / f"linear_cv_attnpath_{encoder}_matek_bm.json").read_text())
+    pbc = json.loads((RESULTS / f"linear_unseen_attnpath_{encoder}_pbc.json").read_text())
+    regions = ["nucleus", "cytoplasm", "rest"]
+    shares = {"matek": np.array([[matek["all_cells"]["shares_all_blocks"][d][r] for r in regions] for d in order]),
+              "pbc": np.array([[pbc["parts"]["test"]["all_cells"]["shares_all_blocks"][d][r]["mean"]
+                                for r in regions] for d in order])}
+    color = {"matek": SERIES["topk"], "pbc": SERIES["batchtopk"]}
+
+    plt.rcParams["mathtext.fontset"] = "stix"      # Times-like math, to match Nimbus Roman
+    fig, (top, bottom) = plt.subplots(2, 1, figsize=(7.0, 1.4), sharex=True, facecolor=SURFACE,
+                                      gridspec_kw={"height_ratios": [1.15, 1], "hspace": 0.12})
+    fig.subplots_adjust(left=0.06, right=0.998, top=0.985, bottom=0.22)   # the full text width
+    for ax in (top, bottom):
+        _style(ax)
+        ax.grid(False, axis="x")
+        ax.tick_params(labelsize=8, length=2, colors=TEXT)
+    for dx, part, col in ((-0.27, "matek", "matek"), (0.0, "pbc", "pbc")):
+        c = color[col]
+        top.vlines(x + dx, table[f"{part}_2"], table[f"{part}_1"], color=c, linewidth=0.6)
+        top.scatter(x + dx, table[f"{part}_1"], s=9, color=c, linewidths=0, zorder=3)
+        top.scatter(x + dx, table[f"{part}_2"], s=9, facecolors=SURFACE, edgecolors=c, linewidths=0.7, zorder=3)
+        top.scatter(x + dx, table[f"{part}_type_only"], s=14, marker="_", color=c, linewidths=0.9, zorder=3)
+    top.vlines(x + 0.27, rho["testB"], rho["val"], color=INK_2, linewidth=0.6)
+    top.scatter(x + 0.27, rho["val"], s=10, marker="v", color=INK_2, linewidths=0, zorder=3)
+    top.scatter(x + 0.27, rho["testB"], s=10, marker="v", facecolors=SURFACE, edgecolors=INK_2,
+                linewidths=0.7, zorder=3)
+    top.set_ylim(0, 1.02)
+    top.set_yticks([0, 0.5, 1])
+    top.set_ylabel(r"$R^2$, $\rho$", fontsize=8, color=TEXT)
+
+    width = 0.09
+    for side, part in ((-1, "matek"), (1, "pbc")):
+        for k, region in enumerate(regions):
+            pos = x + side * 0.2 + (k - 1) * width
+            bottom.bar(pos, shares[part][:, k], width=width, color=_shade(color[part], [1, 0.55, 0.25][k]),
+                       linewidth=0)
+        for i, d in enumerate(order):
+            measured = ["nucleus", "cytoplasm"] if MEASURED_IN[d] == "both" else [MEASURED_IN[d]]
+            for region in measured:
+                k = regions.index(region)
+                bottom.scatter(x[i] + side * 0.2 + (k - 1) * width, shares[part][i, k] + 0.06, s=2.5,
+                               color=INK, linewidths=0, zorder=3)
+    bottom.set_ylim(0, 0.7)
+    bottom.set_yticks([0, 0.3, 0.6])
+    bottom.set_ylabel("share", fontsize=8, color=TEXT)
+    bottom.set_xticks(x)
+    bottom.set_xticklabels([SUMMARY_LABEL[d] for d in order], fontsize=8, color=TEXT, linespacing=0.95)
+    bottom.tick_params(axis="x", length=0)
+    bottom.set_xlim(x[0] - 0.5, x[-1] + 0.5)
+    fig.align_ylabels((top, bottom))
+
+    FIGURES.mkdir(exist_ok=True)
+    out = FIGURES / f"linear_summary_{encoder}.pdf"
+    fig.savefig(out, format="pdf", facecolor=SURFACE)
+    fig.savefig(out.with_suffix(".png"), dpi=300, facecolor=SURFACE)
+    plt.close(fig)
+    print(f"wrote {out.relative_to(ROOT)}")
+
+
 # Per-readout patch maps on PBC (src/analysis/linear_unseen_attnpath.py): the cell types shown,
 # each the script's seeded random draw, and readouts from the size, cytoplasm, shape and texture
 # families.
 MAP_TYPES = ["neutrophil", "lymphocyte", "monocyte"]
 MAP_READOUTS = ["nuclear_area", "nc_ratio", "form_factor", "eccentricity", "glcm_contrast"]
 MAP_TILE = 0.85  # inches per tile
+MAP_TILE_ALL = 0.643  # all 11 readouts: the figure spans the 178 mm text width at 1:1
 
 
 def linear_unseen_maps(encoder: str = "dinobloom", split: str = "test", readouts: list[str] = MAP_READOUTS,
-                       suffix: str = "") -> None:
+                       suffix: str = "", tile: float = MAP_TILE) -> None:
     """Where each readout reads, cell by cell: centred attention-path maps on PBC (protocol.md §16).
 
     From src/analysis/linear_unseen_attnpath.py: per PBC cell type, one cell drawn at
@@ -600,7 +709,7 @@ def linear_unseen_maps(encoder: str = "dinobloom", split: str = "test", readouts
                 for c in cells}
 
     n_cols = 1 + len(readouts)
-    fig, axes = plt.subplots(len(MAP_TYPES), n_cols, figsize=(MAP_TILE * n_cols + 0.6, MAP_TILE * len(MAP_TYPES) + 0.3),
+    fig, axes = plt.subplots(len(MAP_TYPES), n_cols, figsize=(tile * n_cols + 0.6, tile * len(MAP_TYPES) + 0.3),
                              facecolor=SURFACE, gridspec_kw={"wspace": 0.04, "hspace": 0.04})
     for r, (cell_type, cid) in enumerate(cells.items()):
         crop = Image.open(crops._source(r)).convert("RGB").resize((SIZE, SIZE), Image.BICUBIC)
@@ -612,11 +721,9 @@ def linear_unseen_maps(encoder: str = "dinobloom", split: str = "test", readouts
             for field in outlines[cid]:  # nucleus, then cell
                 axes[r, j + 1].contour(field, levels=[0.5], colors=[INK], linewidths=0.6)
             if r == 0:
-                label = DESCRIPTOR_LABEL[d]
-                if len(label) > 16:  # the long names wrap (all-readouts figure); the paper's five fit on one line
-                    cut = label.rfind(" ", 0, len(label) // 2 + 1)
-                    label = label[:cut] + "\n" + label[cut + 1:]
-                axes[r, j + 1].set_title(label, fontsize=6, color=TEXT, pad=3)
+                # the five-readout figure fits the full names; all 11 use one-line short names
+                label = DESCRIPTOR_LABEL[d] if len(readouts) <= len(MAP_READOUTS) else MAP_SHORT_LABEL[d]
+                axes[r, j + 1].set_title(label, fontsize=6, color=TEXT, pad=3, linespacing=0.95)
     for ax in axes.flat:
         ax.set_xticks([])
         ax.set_yticks([])
@@ -640,7 +747,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--encoder", default="dinobloom")
     ap.add_argument("--only", choices=["morphometry", "dims", "weights", "ablation",
-                                       "heatmap", "regions", "attnpath", "maps", "maps_all"])
+                                       "heatmap", "regions", "attnpath", "maps", "maps_all", "summary"])
     args = ap.parse_args()
     if args.only in (None, "morphometry"):
         morphometry_effect_sizes()
@@ -659,8 +766,11 @@ def main() -> None:
         linear_cv_attnpath(args.encoder)
     if args.only in (None, "maps"):
         linear_unseen_maps(args.encoder)
-    if args.only in (None, "maps_all"):   # all 11 readouts, for the repository
-        linear_unseen_maps(args.encoder, readouts=[d for family in HEATMAP_ROWS for d in family], suffix="_all")
+    if args.only in (None, "maps_all"):   # all 11 readouts, tiles sized to the full text width (the paper's Fig. 3)
+        linear_unseen_maps(args.encoder, readouts=[d for family in HEATMAP_ROWS for d in family], suffix="_all",
+                           tile=MAP_TILE_ALL)
+    if args.only in (None, "summary"):
+        linear_summary(args.encoder)
 
 
 if __name__ == "__main__":

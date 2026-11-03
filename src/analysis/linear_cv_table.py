@@ -117,7 +117,7 @@ def table1_tex(t: pd.DataFrame, unseen: dict[str, str] = TEST_FOLD) -> str:
     lines = [r"\begin{tabular}{l" + "cc" * len(GROUPS) + "}", r"\toprule",
              " & " + " & ".join(rf"\multicolumn{{2}}{{c}}{{{names[g]}}}" for g in GROUPS) + r" \\",
              "".join(rf"\cmidrule(lr){{{2 + 2 * i}-{3 + 2 * i}}}" for i in range(len(GROUPS))),
-             "Readout & " + " & ".join(h for g in GROUPS for h in heads[g]) + r" \\",
+             "Linear regression & " + " & ".join(h for g in GROUPS for h in heads[g]) + r" \\",
              r"\midrule"]
     for f, group in t.groupby("family", sort=True):
         if f == len(HEATMAP_ROWS):
