@@ -126,7 +126,8 @@ def table1_tex(t: pd.DataFrame, unseen: dict[str, str] = TEST_FOLD) -> str:
             lines.append(r"\addlinespace")
         for r in group.itertuples():
             cells = [getattr(r, f"{g}_{i}") for g in GROUPS for i in (1, 2)]
-            lines.append(" & ".join([r.row, *("--" if pd.isna(v) else f"{v:.3f}" for v in cells)]) + r" \\")
+            lines.append(" & ".join([r.row, *("--" if pd.isna(v) else f"{v:.3f}".replace("-", "$-$")  # minus, not hyphen
+                                              for v in cells)]) + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     return "\n".join(lines) + "\n"
 
